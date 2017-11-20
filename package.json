@@ -1,0 +1,32 @@
+{
+	"name": "postcss-icon",
+	"version": "0.0.1",
+	"main": "index.js",
+	"repository": "https://github.com/retyui/postcss-icon",
+	"author": "David ♥ <vamnemne@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"lint": "eslint ./**/*.js",
+		"precompile": "npm run lint",
+		"compile": "babel lib --out-dir dist",
+		"pretest": "npm run compile",
+		"test": "./node_modules/.bin/mocha ./test/test.js",
+		"debug": "node --inspect --debug-brk ./node_modules/mocha/bin/_mocha ./test/test.js",
+		"prepublish": "npm run test"
+	},
+	"dependencies": {
+		"postcss": "^6.0.0"
+	},
+	"devDependencies": {
+		"babel-cli": "6.24.1",
+		"babel-eslint": "7.2.3",
+		"babel-plugin-add-module-exports": "0.2.1",
+		"babel-preset-env": "1.5.2",
+		"babel-register": "6.24.1",
+		"chai": "3.5.0",
+		"css-icon": "wentin/cssicon",
+		"eslint": "3.19.0",
+		"icono": "^1.3.1",
+		"mocha": "3.4.2"
+	}
+}

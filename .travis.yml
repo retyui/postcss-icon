@@ -1,0 +1,15 @@
+sudo: false
+cache:
+  yarn: true
+language: node_js
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      node_js: 4
+    - os: linux
+      dist: trusty
+      node_js: 6
+    - os: linux
+      dist: trusty
+      node_js: 8
