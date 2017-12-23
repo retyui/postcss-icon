@@ -7,6 +7,6 @@
 .travis.yml
 yarn.lock
 appveyor.yml
-lib/
+src/
 test/
 parser/

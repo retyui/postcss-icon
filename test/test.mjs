@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import postcss from "postcss";
-import postcssIcon from "../dist/index";
-import { objectMap } from "../dist/utils.js";
+import postcssIcon from "../lib/index";
+import { objectMap } from "../lib/utils.js";
 
 function clearStr(str) {
 	return str.replace(/\s/g, "");

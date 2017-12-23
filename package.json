@@ -8,26 +8,21 @@
 	"scripts": {
 		"lint": "eslint ./**/*.js",
 		"precompile": "npm run lint",
-		"compile": "babel lib --out-dir dist",
+		"compile": "babel src --out-dir lib",
 		"pretest": "npm run compile",
-		"test": "mocha ./test/test.js"
+		"test": "mocha --compilers js:babel-register ./test/test.mjs"
 	},
 	"dependencies": {
 		"postcss": "6"
 	},
 	"devDependencies": {
-		"babel-cli": "6.26.0",
-		"babel-eslint": "8.0.3",
-		"babel-plugin-transform-beautifier": "^0.1.0",
+		"babel-cli": "^6.24.1",
+		"babel-eslint": "^7.2.3",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "1.6.1",
-		"babel-register": "6.26.0",
+		"babel-preset-env": "^1.5.2",
+		"babel-register": "^6.24.1",
 		"chai": "3.5.0",
-		"cssicon": "^1.0.0",
 		"eslint": "3.19.0",
-		"mocha": "3.4.2",
-		"postcss-icon.cssicon": "^0.0.4",
-		"postcss-icon.icono": "^0.0.1",
-		"postcss-icon.joshnh": "^0.0.2"
+		"mocha": "3.4.2"
 	}
 }
