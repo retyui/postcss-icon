@@ -1,0 +1,652 @@
+a.icon {
+    background-color: #fed;
+    border: 2px solid #fc6;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+a.icon:after,
+a.icon:before {
+    background: #fed;
+    border: 2px solid #fc6;
+    content: '';
+    position: absolute;
+}
+a.icon:hover,
+a.icon:hover:after,
+a.icon:hover:before {
+    background-color: #ffe;
+}
+
+/* New Document Icon */
+
+a.newDoc {
+    border-top: 2px solid #fc6;
+    box-shadow: inset 0 0 0 2px #fed;
+    height: 15px;
+    top: 10px;
+    width: 20px;
+}
+a.newDoc:hover {
+    box-shadow: inset 0 0 0 2px #ffe;
+}
+a.newDoc:after {
+    height: 10px;
+    right: 1px;
+    top: -9px;
+    width: 10px;
+    z-index: -1;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+a.newDoc:before {
+    border-bottom: none;
+    border-right: 2px solid #fc6;
+    height: 10px;
+    left: -2px;
+    top: -12px;
+    width: 11px;
+}
+
+/* Previous Icon */
+
+a.prev {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.prev:after,
+a.prev:before {
+    border-radius: 2px;
+    height: 0;
+    left: 5px;
+    width: 9px;
+}
+a.prev:after {
+    bottom: 8px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+a.prev:before {
+    top: 8px;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+/* Next Icon */
+
+a.next {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.next:after,
+a.next:before {
+    border-radius: 2px;
+    height: 0;
+    right: 5px;
+    width: 9px;
+}
+a.next:after {
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+a.next:before {
+    bottom: 8px;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+/* Mail Icon */
+
+a.mail {
+    height: 20px;
+    top: 4px;
+    width: 28px;
+}
+a.mail:after,
+a.mail:before {
+    border-top: none;
+    top: 6px;
+    width: 13px;
+}
+a.mail:after {
+    left: -2px;
+    -webkit-transform: rotate(25deg);
+       -moz-transform: rotate(25deg);
+        -ms-transform: rotate(25deg);
+         -o-transform: rotate(25deg);
+            transform: rotate(25deg);
+}
+a.mail:before {
+    right: -2px;
+    -webkit-transform: rotate(-25deg);
+       -moz-transform: rotate(-25deg);
+        -ms-transform: rotate(-25deg);
+         -o-transform: rotate(-25deg);
+            transform: rotate(-25deg);
+}
+
+/* Contacts Icon */
+
+a.contacts {
+    border-left-width: 6px;
+    color: #fc6;
+    font: bold 12px/1 sans-serif;
+    height: 25px;
+    text-decoration: none;
+    width: 18px;
+}
+a.contacts:after,
+a.contacts:before {
+    border: none;
+}
+a.contacts:after {
+    content: '@';
+    right: 3px;
+    top: 5px;
+}
+
+/* Chart Icon */
+
+a.chart {
+    height: 20px;
+    margin-right: 30px;
+    top:5px;
+    width: 4px;
+}
+a.chart:after,
+a.chart:before {
+    bottom: -2px;
+    width: 4px;
+}
+a.chart:after {
+    height: 25px;
+    left: 8px;
+}
+a.chart:before {
+    height: 15px;
+    left: 18px;
+}
+
+/* Clock Icon */
+
+a.clock {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.clock:after,
+a.clock:before {
+    border-left: none;
+    width: 0;
+}
+a.clock:after {
+    height: 9px;
+    left: 12px;
+    top: 3px;
+}
+a.clock:before {
+    height: 4px;
+    left: 15px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+/* Calendar Icon */
+
+a.calendar {
+    height: 23px;
+    top: 2px;
+    width: 27px;
+}
+a.calendar:after {
+    bottom: 19px;
+    left: -2px;
+    right: -2px;
+    top: -2px;
+}
+a.calendar:before {
+    background: none;
+    border-bottom: none;
+    border-top: none;
+    border-width: 4px;
+    bottom: 23px;
+    left: 2px;
+    right: 2px;
+    top: -4px;
+}
+a.calendar:hover:before {
+    background: none;
+}
+
+/* Folder Icon */
+
+a.folder {
+    height: 18px;
+    top: 6px;
+    width: 27px;
+}
+a.folder:after {
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    height: 3px;
+    left: 1px;
+    top: -5px;
+    width: 10px;
+}
+a.folder:before {
+    border: none;
+}
+
+/* Add Icon */
+
+a.add {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.add:after {
+    height: 16px;
+    left: 11px;
+    top: 3px;
+    width: 0;
+}
+a.add:before {
+    height: 0;
+    left: 3px;
+    top: 11px;
+    width: 16px;
+}
+
+/* Subtract Icon */
+
+a.subtract {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.subtract:after {
+    height: 0;
+    left: 3px;
+    top: 11px;
+    width: 16px;
+}
+a.subtract:before {
+    border: none;
+}
+
+/* Full Battery Icon */
+
+a.batFull {
+    height: 22px;
+    margin-left: 18px;
+    margin-right: 18px;
+    top: 3px;
+    width: 8px;
+}
+a.batFull:after {
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+}
+a.batFull:before {
+    height: 0;
+    left: 1px;
+    right: 1px;
+    top: -4px;
+}
+
+/* Empty Battery Icon */
+
+a.batEmpty {
+    height: 22px;
+    margin-left: 18px;
+    margin-right: 18px;
+    top: 3px;
+    width: 8px;
+}
+a.batEmpty:after {
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    top: 16px;
+}
+a.batEmpty:before {
+    height: 0;
+    left: 1px;
+    right: 1px;
+    top: -4px;
+}
+
+/* Tick Icon */
+
+a.tick {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.tick:after {
+    height: 14px;
+    left: 13px;
+    top: 5px;
+    width: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+
+}
+a.tick:before {
+    height: 0;
+    left: 4px;
+    top: 14px;
+    width: 2px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+/* Cross Icon */
+
+a.cross {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.cross:after {
+    height: 0;
+    left: 3px;
+    top: 11px;
+    width: 16px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+a.cross:before {
+    height: 0;
+    left: 3px;
+    top: 11px;
+    width: 16px;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+/* Eject Icon */
+
+a.eject {
+    height: 4px;
+    top: 20px;
+    width: 26px;
+}
+a.eject:after,
+a.eject:before,
+a.eject:hover:after,
+a.eject:hover:before {
+    background: none;
+}
+a.eject:after {
+    border-bottom: 15px solid #fc6;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    height: 0;
+    left: -2px;
+    top: -35px;
+    width: 0;
+}
+a.eject:before {
+    border-bottom: 10px solid #fed;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    height: 0;
+    left: 3px;
+    top: -27px;
+    width: 0;
+    z-index: 1;
+}
+a.eject:hover:before {
+    border-bottom-color: #ffe;
+}
+
+/* User Icon */
+
+a.user {
+    border-radius: 10px 10px 0 0;
+    height: 6px;
+    top: 19px;
+    width: 26px;
+}
+a.user:after {
+    border-radius: 10px;
+    height: 17px;
+    left: 4px;
+    top: -20px;
+    width: 14px;
+}
+a.user:before {
+    border: none;
+    height: 10px;
+    left: 9px;
+    top: -9px;
+    width: 8px;
+    z-index: 1;
+}
+
+/* Heart Icon */
+
+a.heart {
+    border-radius: 100%;
+    height: 15px;
+    margin-right: 24px;
+    width: 15px;
+}
+a.heart:after {
+    border-radius: 100%;
+    height: 15px;
+    left: 11px;
+    top: -2px;
+    width: 15px;
+    z-index: -1;
+}
+a.heart:before {
+    border-left: none;
+    border-top: none;
+    height: 16px;
+    left: 5px;
+    top: 6px;
+    width: 16px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+
+/* Play Icon */
+
+a.play {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.play:after,
+a.play:before,
+a.play:hover:after,
+a.play:hover:before {
+    background: none;
+}
+a.play:after {
+    border-bottom: 8px solid transparent;
+    border-left: 13px solid #fc6;
+    border-right: 13px solid transparent;
+    border-top: 8px solid transparent;
+    height: 0;
+    left: 8px;
+    top: 5px;
+    width: 0;
+}
+a.play:before {
+    border: none;
+}
+
+/* Pause Icon */
+
+a.pause {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.pause:after,
+a.pause:before {
+    height: 10px;
+    top: 6px;
+    width: 0;
+}
+a.pause:after {
+    left: 7px;
+}
+a.pause:before {
+    left: 15px;
+}
+
+/* Stop Icon */
+
+a.stop {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+}
+a.stop:after {
+    background: #fc6;
+    height: 9px;
+    left: 7px;
+    top: 7px;
+    width: 8px;
+}
+a.stop:hover:after {
+    background: #fc6;
+}
+a.stop:before {
+    border: none;
+}
+
+/* Flag Icon */
+
+a.flag {
+    height: 25px;
+    margin-right: 35px;
+    width: 0;
+}
+a.flag:after,
+a.flag:before {
+    height: 8px;
+    left: 0;
+    top: -2px;
+    width: 10px;
+}
+a.flag:before {
+    left: 6px;
+    top: 2px;
+}
+
+/* Home Icon */
+
+a.home {
+    height: 10px;
+    top: 14px;
+    width: 20px;
+}
+a.home:after,
+a.home:before,
+a.home:hover:after,
+a.home:hover:before {
+    background: none;
+}
+a.home:after {
+    border-bottom: 15px solid #fc6;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 15px solid transparent;
+    height: 0;
+    left: -6px;
+    top: -29px;
+    width: 0;
+}
+a.home:before {
+    border-bottom: 10px solid #fed;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-top: 10px solid transparent;
+    height: 0;
+    left: -1px;
+    top: -21px;
+    width: 0;
+    z-index: 1;
+}
+a.home:hover:before {
+    border-bottom-color: #ffe;
+}
+
+/* Comment Icon */
+
+a.comment {
+    border-radius: 4px;
+    height: 18px;
+    width: 26px;
+}
+a.comment:after,
+a.comment:before {
+    background: none;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fc6;
+    bottom: -14px;
+    height: 0;
+    left: 7px;
+    width: 0;
+}
+a.comment:before {
+    border-top-color: #fed;
+    bottom: -11px;
+    z-index: 1;
+}
+a.comment:hover:after {
+    background: none;
+}
+a.comment:hover:before {
+    background: none;
+    border-top-color: #ffe;
+}​

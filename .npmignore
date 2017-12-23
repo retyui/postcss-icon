@@ -5,9 +5,8 @@
 .eslintignore
 .npmignore
 .travis.yml
-.babelrc
 yarn.lock
 appveyor.yml
 lib/
 test/
-.idea/
+parser/

@@ -1,0 +1,72 @@
+.icon.folder{
+	@icon: joshua-folder;
+}
+.icon.newDoc{
+	@icon: joshua-newDoc;
+}
+.icon.mail{
+	@icon: joshua-mail;
+}
+.icon.contacts{
+	@icon: joshua-contacts;
+}
+.icon.calendar{
+	@icon: joshua-calendar;
+}
+.icon.clock{
+	@icon: joshua-clock;
+}
+.icon.chart{
+	@icon: joshua-chart;
+}
+.icon.prev{
+	@icon: joshua-prev;
+}
+.icon.next{
+	@icon: joshua-next;
+}
+.icon.flag{
+	@icon: joshua-flag;
+}
+.icon.add{
+	@icon: joshua-add;
+}
+.icon.subtract{
+	@icon: joshua-subtract;
+}
+.icon.tick{
+	@icon: joshua-tick;
+}
+.icon.cross{
+	@icon: joshua-cross;
+}
+.icon.user{
+	@icon: joshua-user;
+}
+.icon.comment{
+	@icon: joshua-comment;
+}
+.icon.heart{
+	@icon: joshua-heart;
+}
+.icon.home{
+	@icon: joshua-home;
+}
+.icon.batFull{
+	@icon: joshua-batFull;
+}
+.icon.batEmpty{
+	@icon: joshua-batEmpty;
+}
+.icon.play{
+	@icon: joshua-play;
+}
+.icon.pause{
+	@icon: joshua-pause;
+}
+.icon.stop{
+	@icon: joshua-stop;
+}
+.icon.eject{
+	@icon: joshua-eject;
+}

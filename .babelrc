@@ -6,7 +6,5 @@
 			}
 		}]
 	],
-	"plugins": [
-		"add-module-exports"
-	]
+	plugins: ["transform-beautifier", "transform-object-rest-spread"]
 }

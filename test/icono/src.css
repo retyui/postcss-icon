@@ -1,0 +1,519 @@
+.icono-home{
+	@icon: icono-home;
+}
+
+.icono-mail{
+	@icon: icono-mail;
+}
+
+.icono-rss{
+	@icon: icono-rss;
+}
+
+.icono-hamburger{
+	@icon: icono-hamburger;
+}
+
+.icono-plus{
+	@icon: icono-plus;
+}
+
+.icono-cross{
+	@icon: icono-cross;
+}
+
+.icono-check{
+	@icon: icono-check;
+}
+
+.icono-power{
+	@icon: icono-power;
+}
+
+.icono-heart{
+	@icon: icono-heart;
+}
+
+.icono-infinity{
+	@icon: icono-infinity;
+}
+
+.icono-flag{
+	@icon: icono-flag;
+}
+
+.icono-file{
+	@icon: icono-file;
+}
+
+.icono-image{
+	@icon: icono-image;
+}
+
+.icono-video{
+	@icon: icono-video;
+}
+
+.icono-music{
+	@icon: icono-music;
+}
+
+.icono-headphone{
+	@icon: icono-headphone;
+}
+
+.icono-document{
+	@icon: icono-document;
+}
+
+.icono-folder{
+	@icon: icono-folder;
+}
+
+.icono-pin{
+	@icon: icono-pin;
+}
+
+.icono-smile{
+	@icon: icono-smile;
+}
+
+.icono-eye{
+	@icon: icono-eye;
+}
+
+.icono-sliders{
+	@icon: icono-sliders;
+}
+
+.icono-share{
+	@icon: icono-share;
+}
+
+.icono-sync{
+	@icon: icono-sync;
+}
+
+.icono-reset{
+	@icon: icono-reset;
+}
+
+.icono-gear{
+	@icon: icono-gear;
+}
+
+.icono-signIn{
+	@icon: icono-signIn;
+}
+
+.icono-signOut{
+	@icon: icono-signOut;
+}
+
+.icono-support{
+	@icon: icono-support;
+}
+
+.icono-dropper{
+	@icon: icono-dropper;
+}
+
+.icono-tiles{
+	@icon: icono-tiles;
+}
+
+.icono-list{
+	@icon: icono-list;
+}
+
+.icono-chain{
+	@icon: icono-chain;
+}
+
+.icono-rename{
+	@icon: icono-rename;
+}
+
+.icono-search{
+	@icon: icono-search;
+}
+
+.icono-book{
+	@icon: icono-book;
+}
+
+.icono-forbidden{
+	@icon: icono-forbidden;
+}
+
+.icono-trash{
+	@icon: icono-trash;
+}
+
+.icono-keyboard{
+	@icon: icono-keyboard;
+}
+
+.icono-mouse{
+	@icon: icono-mouse;
+}
+
+.icono-user{
+	@icon: icono-user;
+}
+
+.icono-crop{
+	@icon: icono-crop;
+}
+
+.icono-display{
+	@icon: icono-display;
+}
+
+.icono-imac{
+	@icon: icono-imac;
+}
+
+.icono-iphone{
+	@icon: icono-iphone;
+}
+
+.icono-macbook{
+	@icon: icono-macbook;
+}
+
+.icono-imacBold{
+	@icon: icono-imacBold;
+}
+
+.icono-iphoneBold{
+	@icon: icono-iphoneBold;
+}
+
+.icono-macbookBold{
+	@icon: icono-macbookBold;
+}
+
+.icono-nexus{
+	@icon: icono-nexus;
+}
+
+.icono-microphone{
+	@icon: icono-microphone;
+}
+
+.icono-asterisk{
+	@icon: icono-asterisk;
+}
+
+.icono-terminal{
+	@icon: icono-terminal;
+}
+
+.icono-paperClip{
+	@icon: icono-paperClip;
+}
+
+.icono-market{
+	@icon: icono-market;
+}
+
+.icono-clock{
+	@icon: icono-clock;
+}
+
+.icono-textAlignRight{
+	@icon: icono-textAlignRight;
+}
+
+.icono-textAlignCenter{
+	@icon: icono-textAlignCenter;
+}
+
+.icono-textAlignLeft{
+	@icon: icono-textAlignLeft;
+}
+
+.icono-indent{
+	@icon: icono-indent;
+}
+
+.icono-outdent{
+	@icon: icono-outdent;
+}
+
+.icono-frown{
+	@icon: icono-frown;
+}
+
+.icono-meh{
+	@icon: icono-meh;
+}
+
+.icono-locationArrow{
+	@icon: icono-locationArrow;
+}
+
+.icono-plusCircle{
+	@icon: icono-plusCircle;
+}
+
+.icono-checkCircle{
+	@icon: icono-checkCircle;
+}
+
+.icono-crossCircle{
+	@icon: icono-crossCircle;
+}
+
+.icono-exclamation{
+	@icon: icono-exclamation;
+}
+
+.icono-exclamationCircle{
+	@icon: icono-exclamationCircle;
+}
+
+.icono-comment{
+	@icon: icono-comment;
+}
+
+.icono-commentEmpty{
+	@icon: icono-commentEmpty;
+}
+
+.icono-areaChart{
+	@icon: icono-areaChart;
+}
+
+.icono-pieChart{
+	@icon: icono-pieChart;
+}
+
+.icono-barChart{
+	@icon: icono-barChart;
+}
+
+.icono-bookmark{
+	@icon: icono-bookmark;
+}
+
+.icono-bookmarkEmpty{
+	@icon: icono-bookmarkEmpty;
+}
+
+.icono-filter{
+	@icon: icono-filter;
+}
+
+.icono-volume{
+	@icon: icono-volume;
+}
+
+.icono-volumeLow{
+	@icon: icono-volumeLow;
+}
+
+.icono-volumeMedium{
+	@icon: icono-volumeMedium;
+}
+
+.icono-volumeHigh{
+	@icon: icono-volumeHigh;
+}
+
+.icono-volumeDecrease{
+	@icon: icono-volumeDecrease;
+}
+
+.icono-volumeIncrease{
+	@icon: icono-volumeIncrease;
+}
+
+.icono-volumeMute{
+	@icon: icono-volumeMute;
+}
+
+.icono-tag{
+	@icon: icono-tag;
+}
+
+.icono-calendar{
+	@icon: icono-calendar;
+}
+
+.icono-camera{
+	@icon: icono-camera;
+}
+
+.icono-piano{
+	@icon: icono-piano;
+}
+
+.icono-ruler{
+	@icon: icono-ruler;
+}
+
+.icono-cup{
+	@icon: icono-cup;
+}
+
+.icono-creditCard{
+	@icon: icono-creditCard;
+}
+
+.icono-facebook{
+	@icon: icono-facebook;
+}
+
+.icono-twitter{
+	@icon: icono-twitter;
+}
+
+.icono-gplus{
+	@icon: icono-gplus;
+}
+
+.icono-youtube{
+	@icon: icono-youtube;
+}
+
+.icono-linkedIn{
+	@icon: icono-linkedIn;
+}
+
+.icono-instagram{
+	@icon: icono-instagram;
+}
+
+.icono-flickr{
+	@icon: icono-flickr;
+}
+
+.icono-delicious{
+	@icon: icono-delicious;
+}
+
+.icono-codepen{
+	@icon: icono-codepen;
+}
+
+.icono-blogger{
+	@icon: icono-blogger;
+}
+
+.icono-disqus{
+	@icon: icono-disqus;
+}
+
+.icono-dribbble{
+	@icon: icono-dribbble;
+}
+
+.icono-play{
+	@icon: icono-play;
+}
+
+.icono-pause{
+	@icon: icono-pause;
+}
+
+.icono-stop{
+	@icon: icono-stop;
+}
+
+.icono-rewind{
+	@icon: icono-rewind;
+}
+
+.icono-forward{
+	@icon: icono-forward;
+}
+
+.icono-next{
+	@icon: icono-next;
+}
+
+.icono-previous{
+	@icon: icono-previous;
+}
+
+.icono-caretRight{
+	@icon: icono-caretRight;
+}
+
+.icono-caretLeft{
+	@icon: icono-caretLeft;
+}
+
+.icono-caretUp{
+	@icon: icono-caretUp;
+}
+
+.icono-caretDown{
+	@icon: icono-caretDown;
+}
+
+.icono-rightArrow{
+	@icon: icono-rightArrow;
+}
+
+.icono-leftArrow{
+	@icon: icono-leftArrow;
+}
+
+.icono-upArrow{
+	@icon: icono-upArrow;
+}
+
+.icono-downArrow{
+	@icon: icono-downArrow;
+}
+
+.icono-sun{
+	@icon: icono-sun;
+}
+
+.icono-moon{
+	@icon: icono-moon;
+}
+
+.icono-caretRightCircle{
+	@icon: icono-caretRightCircle;
+}
+
+.icono-caretLeftCircle{
+	@icon: icono-caretLeftCircle;
+}
+
+.icono-caretUpCircle{
+	@icon: icono-caretUpCircle;
+}
+
+.icono-caretDownCircle{
+	@icon: icono-caretDownCircle;
+}
+
+.icono-caretRightSquare{
+	@icon: icono-caretRightSquare;
+}
+
+.icono-caretLeftSquare{
+	@icon: icono-caretLeftSquare;
+}
+
+.icono-caretUpSquare{
+	@icon: icono-caretUpSquare;
+}
+
+.icono-caretDownSquare{
+	@icon: icono-caretDownSquare;
+}
+
+.icono-cart{
+	@icon: icono-cart;
+}
+
+.icono-sitemap{
+	@icon: icono-sitemap;
+}
