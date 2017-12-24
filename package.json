@@ -31,5 +31,5 @@
 		"css",
 		"postcss-plugin",
 		"css-icon"
-	],
+	]
 }

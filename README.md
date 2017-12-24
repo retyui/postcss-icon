@@ -7,11 +7,16 @@
 [![Travis](https://img.shields.io/travis/retyui/postcss-icon.svg?label=unix)](https://travis-ci.org/retyui/postcss-icon)
 [![David](https://img.shields.io/david/retyui/postcss-icon.svg)](https://david-dm.org/retyui/postcss-icon)
 
-Now you do not need to connect the entire style library for css icons.
-PostCSS plugin that adds `css icons` from icon sets
+PostCSS plugin that adds `css icons` from Icon sets
 
-## Work algorithm
-![Work algorithm](https://raw.githubusercontent.com/retyui/postcss-icon/master/draw.png)
+Now you do not need to connect the entire style library for css icons.
+
+## Ison sets:
+- [postcss-icon.cssicon](https://github.com/retyui/postcss-icon.cssicon) (count icons : 192) [result demo](https://retyui.github.io/postcss-icon/cssicon/)
+- [postcss-icon.icono](https://github.com/retyui/postcss-icon.icono) (count icons : 131) [result demo](https://retyui.github.io/postcss-icon/icono/)
+- [postcss-icon.joshnh](https://github.com/retyui/postcss-icon.joshnh) (count icons : 24) [result demo](https://retyui.github.io/postcss-icon/joshnh/)
+
+
 
 ## Install for postcss
 ```bash
@@ -44,7 +49,7 @@ npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.josh
 	content: '';
 	/* ... */
 }
-/* after \ before \ i \ span */
+/* after  before  i  span */
 .icon{
 	color: #000;
 	width: 20px;
@@ -80,3 +85,7 @@ postcss([
 		}
 	})
 ]);
+```
+
+## Work algorithm
+![Work algorithm](https://raw.githubusercontent.com/retyui/postcss-icon/master/draw.png)
