@@ -27,7 +27,7 @@ Now you do not need to connect the entire style library for css icons.
 npm install --save-dev postcss-icon
 
 # and the icon set you need
-npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.joshnh
+npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.rosa postcss-icon.airpwn postcss-icon.stiffi postcss-icon.joshnh
 ```
 
 **Input:**
