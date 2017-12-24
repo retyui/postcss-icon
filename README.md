@@ -14,6 +14,9 @@ Now you do not need to connect the entire style library for css icons.
 ## Ison sets:
 - [postcss-icon.cssicon](https://github.com/retyui/postcss-icon.cssicon) (count icons : 192) [result demo](https://retyui.github.io/postcss-icon/cssicon/)
 - [postcss-icon.icono](https://github.com/retyui/postcss-icon.icono) (count icons : 131) [result demo](https://retyui.github.io/postcss-icon/icono/)
+- [postcss-icon.rosa](https://github.com/retyui/postcss-icon.rosa) (count icons : 78) [result demo](https://retyui.github.io/postcss-icon/rosa/)
+- [postcss-icon.airpwn](https://github.com/retyui/postcss-icon.airpwn) (count icons : 39) [result demo](https://retyui.github.io/postcss-icon/airpwn/)
+- [postcss-icon.stiffi](https://github.com/retyui/postcss-icon.stiffi) (count icons : 34) [result demo](https://retyui.github.io/postcss-icon/stiffi/)
 - [postcss-icon.joshnh](https://github.com/retyui/postcss-icon.joshnh) (count icons : 24) [result demo](https://retyui.github.io/postcss-icon/joshnh/)
 
 
@@ -61,10 +64,13 @@ npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.josh
 
 ## Usage
 ```js
+const postcss     = require('postcss');
+const postcssIcon = require('postcss-icon');
+
 // postcss(require('postcss-icon')(iconSetDataList))
 // exemple all icon Set
 postcss(
-	require("postcss-icon")(
+	postcssIcon(
 		{ prefix: "cssicon-", data: require("postcss-icon.cssicon") },
 		{ prefix: "icono-", data: require("postcss-icon.icono") },
 		{ prefix: "joshua-", data: require("postcss-icon.joshnh") }
@@ -73,7 +79,7 @@ postcss(
 
 // example custom data set
 postcss([
-	require("postcss-icon")({
+	postcssIcon({
 		prefix: "custom-",
 		data: {
 			iconName: [
