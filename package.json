@@ -1,7 +1,7 @@
 {
 	"name": "postcss-icon",
 	"description": "PostCSS plugin which allows you to quickly add styles to css icons",
-	"version": "6.0.4",
+	"version": "6.0.5",
 	"main": "lib/index.js",
 	"repository": "https://github.com/retyui/postcss-icon",
 	"author": "David ♥ <vamnemne@gmail.com>",
