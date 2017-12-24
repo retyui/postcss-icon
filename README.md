@@ -20,14 +20,14 @@ Now you do not need to connect the entire style library for css icons.
 - [postcss-icon.joshnh](https://github.com/retyui/postcss-icon.joshnh) (count icons : 24) [result demo](https://retyui.github.io/postcss-icon/joshnh/)
 
 
-
 ## Install for postcss
 ```bash
 # the plugin
 npm install --save-dev postcss-icon
 
 # and the icon set you need
-npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.rosa postcss-icon.airpwn postcss-icon.stiffi postcss-icon.joshnh
+npm install --save-dev postcss-icon.cssicon postcss-icon.icono postcss-icon.rosa
+npm install --save-dev postcss-icon.airpwn postcss-icon.stiffi postcss-icon.joshnh
 ```
 
 **Input:**
@@ -71,9 +71,12 @@ const postcssIcon = require('postcss-icon');
 // exemple all icon Set
 postcss(
 	postcssIcon(
-		{ prefix: "cssicon-", data: require("postcss-icon.cssicon") },
-		{ prefix: "icono-", data: require("postcss-icon.icono") },
-		{ prefix: "joshua-", data: require("postcss-icon.joshnh") }
+		{ prefix: 'cssicon-',	data: require('postcss-icon.cssicon') },
+		{ prefix: 'icono-',	data: require('postcss-icon.icono') },
+		{ prefix: 'rose-',	data: require('postcss-icon.rosa') },
+		{ prefix: 'airpwn-',	data: require('postcss-icon.airpwn') },
+		{ prefix: 'stiffi-',	data: require('postcss-icon.stiffi') },
+		{ prefix: 'joshnh-',	data: require('postcss-icon.joshnh') }
 	)
 );
 
