@@ -1,3 +1,4 @@
-/lib/*
-/test/*
-/parser/*
+lib/*
+test/*
+parser/*
+_local/*

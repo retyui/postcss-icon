@@ -19,12 +19,14 @@
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
 		"babel-eslint": "^7.2.3",
+		"babel-plugin-add-module-exports": "^0.2.1",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-env": "^1.5.2",
 		"babel-register": "^6.24.1",
 		"chai": "3.5.0",
 		"eslint": "3.19.0",
-		"mocha": "3.4.2"
+		"mocha": "3.4.2",
+		"postcss-merge-rules": "^4.0.0-rc.2"
 	},
 	"keywords": [
 		"postcss",

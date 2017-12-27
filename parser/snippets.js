@@ -41,3 +41,7 @@
 // https://codepen.io/stiffi/pen/ysbCd?q=css+icons&limit=all&type=type-pens
 // https://codepen.io/RRoberts/pen/LxZwQP?limit=all&page=2&q=css+icons
 // https://codepen.io/airpwn/pen/hgdBc?limit=all&page=4&q=css+icons
+
+https://github.com/FortAwesome/Font-Awesome
+https://github.com/google/material-design-icons     -> https://google.github.io/material-design-icons/
+https://www.npmjs.com/package/fonteditor-core
