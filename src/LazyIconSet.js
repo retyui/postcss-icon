@@ -1,4 +1,4 @@
-import { asyncRun, objectMap } from "./helps.js";
+import { objectMap } from "./helps.js";
 import { CssIconSet } from "./CssIconSet.js";
 import { FontIconSet } from "./FontIconSet.js";
 import { NAME } from "./config";
@@ -76,12 +76,12 @@ export class LazyIconSet {
 	static initIconSet(configIconSet = {}) {
 		const { name, type } = configIconSet;
 		switch (type) {
-			case "css":
-				return new CssIconSet(configIconSet);
-			case "font":
-				return new FontIconSet(configIconSet);
-			default:
-				throw new Error(
+		case "css":
+			return new CssIconSet(configIconSet);
+		case "font":
+			return new FontIconSet(configIconSet);
+		default:
+			throw new Error(
 					`[${NAME}]: The plugin does not support this type \`${type}\`, for css icons \`${name}\``
 				);
 		}

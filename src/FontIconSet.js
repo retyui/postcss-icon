@@ -1,7 +1,7 @@
 import fs from "fs";
 import { tmpdir } from "os";
 import { promisify } from "util";
-import regeneratorRuntime from "regenerator-runtime";
+// import regeneratorRuntime from "regenerator-runtime/runtime";
 
 const writeFileAsync = promisify(fs.writeFile);
 const readFileAsync = promisify(fs.readFile);
@@ -33,8 +33,7 @@ export class FontIconSet extends IconSet {
 			inline: "woff2",
 			formats: ["woff2", "woff"],
 			resolve: false,
-			extractAll: file => {
-			},
+			// extractAll: () => {},
 			path: "",
 			filename: "../fonts/[name][style-name][hash].[ext]",
 			...output
@@ -43,8 +42,7 @@ export class FontIconSet extends IconSet {
 
 		// fix for fonteditor-core toBase64 node
 		if (global.btoa === undefined) {
-			global.btoa = data => Buffer.from(data)
-				.toString("base64");
+			global.btoa = data => Buffer.from(data).toString("base64");
 		}
 	}
 
@@ -66,14 +64,13 @@ export class FontIconSet extends IconSet {
 			return types;
 		}
 		if (isString(types)) {
-			return types.split(",")
-				.map(e => e.trim());
+			return types.split(",").map(e => e.trim());
 		}
 
 		throw new Error(
 			`[${NAME}] The property (${propName}) value should be 'Array' or 'String', Icon set: ${
 				this._name
-				}`
+			}`
 		);
 	}
 
@@ -129,8 +126,7 @@ export class FontIconSet extends IconSet {
 					node.prepend(
 						decl({
 							prop: "content",
-							value: `'\\${to16Number(iconNum)
-								.toUpperCase()}'`
+							value: `'\\${to16Number(iconNum).toUpperCase()}'`
 						})
 					);
 				}
@@ -218,21 +214,28 @@ class CustomFont {
 			urlsStr = await this._inlineFontSrc(formats);
 		} else {
 			// save all formats
-			urlsStr = await this._fileFontSrc({ formats, ...baseOpt });
+			urlsStr = await this._fileFontSrc({
+				formats,
+				...baseOpt
+			});
 		}
 
 		return this._createFontFace(urlsStr);
 	}
 
-	async _inlineFontSrc(formats) {
-		return await Promise.all(formats.map(
-			async (format) =>
-				`url('${await this.fontToBase64(format)}') ${CustomFont.getFormat(
-					format
-				)}`));}
-	async toBuffer(type) {
+	_inlineFontSrc(formats) {////////////////
+		function getStr(url, format){
+			`url('${url}') ${CustomFont.getFormat(format)}`
+		}
+		const tmp = formats.map(async (format) => getStr(await this.fontToBase64(format), format));
+		return Promise.all(tmp);
+	}
 
-const cache = await this._getFromCache(type);if (cache) {return cache;
+	async toBuffer(type) {
+		const cache = await this._getFromCache(type);
+
+		if (cache) {
+			return cache;
 		}
 
 		const buffer = this._toBuffer(type);
@@ -243,7 +246,10 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 	}
 
 	getTmpName(type) {
-		return pathJoin(tmpdir(), `${NAME}-${this._name}-${this._hash}.${type}`);
+		return pathJoin(
+			tmpdir(),
+			`${NAME}-${this._name}-${this._hash}.${type}`
+		);
 	}
 
 	async _saveToCache(buffer, type) {
@@ -277,9 +283,13 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 
 	async fontToBase64(type) {
 		if (type === "woff2") {
-			return `data:application/font-woff2;charset=utf-8;base64,${(await this.toBuffer("woff2")).toString("base64")}`;
+			return `data:application/font-woff2;charset=utf-8;base64,${(await this.toBuffer(
+				"woff2"
+			)).toString("base64")}`;
 		} else if (type === "ttf") {
-			return `data:font/truetype;charset=utf-8;base64,${(await this.toBuffer("ttf")).toString("base64")}`;
+			return `data:font/truetype;charset=utf-8;base64,${(await this.toBuffer(
+				"ttf"
+			)).toString("base64")}`;
 		} else if (type === "woff") {
 			return this._font.toBase64({ type }); // support: woff ; bad support: ttf,eot,svg
 		}
@@ -294,12 +304,12 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 	}
 
 	async _fileFontSrc({
-						   formats,
-						   fromPath,
-						   toPath,
-						   outputPath = ".",
-						   resolve
-					   }) {
+		formats,
+		fromPath,
+		toPath,
+		outputPath = ".",
+		resolve
+	}) {
 		return (await Promise.all(
 			formats.map(async format => {
 				let result;
@@ -313,7 +323,7 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 					const { name } = pathParse(fromPath);
 					result = `${outputPath}/${name}-icons-${
 						this._name
-						}.${format}`;
+					}.${format}`;
 				}
 
 				let outPutFile = "";
@@ -330,7 +340,10 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 					relativeUrl = result.url;
 				}
 
-				await writeFileAsync(outPutFile, await await this.toBuffer(format));
+				await writeFileAsync(
+					outPutFile,
+					await await this.toBuffer(format)
+				);
 
 				return `url(${relativeUrl}) ${CustomFont.getFormat(format)}`;
 			})
@@ -340,7 +353,7 @@ const cache = await this._getFromCache(type);if (cache) {return cache;
 	_createFontFace(srcStr) {
 		return `@font-face {\n\tfont-family: '${
 			this.fontFamily
-			}';\n\tfont-style: normal;\n\tfont-weight: 400;\n\tsrc: ${srcStr};\n}\n`;
+		}';\n\tfont-style: normal;\n\tfont-weight: 400;\n\tsrc: ${srcStr};\n}\n`;
 	}
 
 	static getFormat(type) {

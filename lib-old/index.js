@@ -10,20 +10,20 @@ var _LazyIconSet = require("./LazyIconSet.js");
 
 var _config = require("./config");
 
-exports.default = (0, _postcss.plugin)(_config.NAME, options => {
+exports.default = (0, _postcss.plugin)(_config.NAME, function (options) {
 	if (!options) {
 		console.log(`[${_config.NAME}]`, "Error: Options data for the css icon can not be empty!");
-		return root => {
+		return function (root) {
 			walkAtRuleIcon(root, nodeToComment);
 		};
 	}
 
-	const lazy = new _LazyIconSet.LazyIconSet(options);
+	var lazy = new _LazyIconSet.LazyIconSet(options);
 
-	return (root, result) => {
+	return function (root, result) {
 		// Step 1: find all icons in this file
-		walkAtRuleIcon(root, atRuleIcon => {
-			const iconAdded = lazy.addIcon({
+		walkAtRuleIcon(root, function (atRuleIcon) {
+			var iconAdded = lazy.addIcon({
 				root: closestRoot(atRuleIcon),
 				parent: atRuleIcon.parent,
 				iconName: clearValue(atRuleIcon.params)
@@ -51,7 +51,7 @@ function nodeToComment(atRuleIcon) {
 }
 
 function walkAtRuleIcon(root, func) {
-	root.walkAtRules(atRuleIcon => {
+	root.walkAtRules(function (atRuleIcon) {
 		if (atRuleIcon.name && atRuleIcon.name === "icon" || atRuleIcon.name === "icon:") {
 			func(atRuleIcon);
 		}
@@ -62,7 +62,9 @@ function clearValue(val) {
 	return val.replace(/['"]/g, "");
 }
 
-function closestRoot({ parent }) {
+function closestRoot(_ref) {
+	var parent = _ref.parent;
+
 	if (parent === undefined) {
 		return false;
 	}

@@ -37,7 +37,10 @@ export default plugin(NAME, (options) => {
 		});
 
 		// Step 2: Extend all finded icons
-		return lazy.applySet({root, result}); // return Promise
+		return lazy.applySet({
+			root,
+			result
+		}); // return Promise
 	};
 });
 

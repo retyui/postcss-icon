@@ -21,8 +21,14 @@ const [from, to] = ["./src/style.css", "./public/assets/css/style.css"].map(e =>
 	const PLUGINS = [
 		postcssIcon({
 			// lazy load
-			"postcss-icon.material-design": { prefix: "md-", output },
-			"postcss-icon.font-awesome-v4": { prefix: "fa-", output },
+			"postcss-icon.material-design": {
+				prefix: "md-",
+				output
+			},
+			"postcss-icon.font-awesome-v4": {
+				prefix: "fa-",
+				output
+			},
 			"postcss-icon.font-awesome-v5": false // this icon set not used
 		})
 	];
