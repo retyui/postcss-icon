@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import postcss from "postcss";
 import postcssIcon from "../lib/index";
-import { objectMap } from "../lib/utils.js";
+
 
 function clearStr(str) {
 	return str.replace(/\s/g, "");
@@ -11,7 +11,7 @@ function test({ input, output, done, plugins, clearCss = true }) {
 	postcss(plugins)
 		.process(input)
 		.then(({ css }) => {
-			// console.log('\n',css,'\n')
+			// // console.log('\n',css,'\n')
 			css =
 				clearCss === true
 					? clearStr(css)
@@ -20,16 +20,19 @@ function test({ input, output, done, plugins, clearCss = true }) {
 				clearCss === true
 					? clearStr(output)
 					: typeof clearCss === "function"
-						? clearCss(output)
-						: output;
+					? clearCss(output)
+					: output;
 
-			expect(css).to.eql(output);
+			expect(css)
+				.to
+				.eql(output);
 			done();
 		});
 }
 
 const exampleData = [
 	{
+		type: 'css',
 		prefix: "",
 		data: {
 			mail: [
@@ -41,16 +44,18 @@ const exampleData = [
 		}
 	},
 	{
+		type: 'css',
 		prefix: "vendor-",
 		data: {
 			mail: [".extend { display: inline-block; }"]
 		}
 	},
 	{
+		type: 'css',
 		prefix: "vendor2-",
 		data: {
 			next: [
-				'.extend::after, .extend::before { content: ""; pointer-events: none; }',
+				".extend::after, .extend::before { content: \"\"; pointer-events: none; }",
 				".extend { box-sizing: border-box; }"
 			]
 		}
@@ -71,10 +76,12 @@ describe("postcss-icon", () => {
 				height: 18px;
 				box-sizing: border-box;
 			}`;
+		// console.log('\n1\n');
 		const testOpt = {
 			output,
-			plugins: postcssIcon([exampleData[0]])
+			plugins: postcssIcon({ custom: exampleData[0] })
 		};
+
 		it("@icon: name;", done => {
 			test({
 				...testOpt,
@@ -116,6 +123,7 @@ describe("postcss-icon", () => {
 			}
 			`;
 		it("check dublicated", done => {
+			// console.log('\n2\n');
 			test({
 				input: ".icon.mail { @icon: dubl-mail; }",
 				output: `
@@ -123,14 +131,15 @@ describe("postcss-icon", () => {
 						display: inline-block;
 					}
 				`,
-				plugins: postcssIcon(
-					{
-						...exampleData[1],
-						prefix: "dubl-"
-					},
-					{
-						...exampleData[0],
-						prefix: "dubl-"
+				plugins: postcssIcon({
+						custom1: {
+							...exampleData[1],
+							prefix: "dubl-"
+						},
+						custom2: {
+							...exampleData[0],
+							prefix: "dubl-"
+						}
 					}
 				),
 				done
@@ -142,8 +151,10 @@ describe("postcss-icon", () => {
 				input: ".icon.next { @icon: next; }",
 				output: outputDataNext,
 				plugins: postcssIcon({
-					...exampleData[2],
-					prefix: ""
+					custom: {
+						...exampleData[2],
+						prefix: ""
+					}
 				}),
 				done
 			});
@@ -153,8 +164,10 @@ describe("postcss-icon", () => {
 				input: ".icon.next { @icon: custom-next; }",
 				output: outputDataNext,
 				plugins: postcssIcon({
-					...exampleData[2],
-					prefix: "custom-"
+					custom: {
+						...exampleData[2],
+						prefix: "custom-"
+					}
 				}),
 				done
 			});
@@ -164,8 +177,8 @@ describe("postcss-icon", () => {
 		const clearCss = css =>
 			css
 				.replace(/[\n\t]/g, "")
-				.replace(/\{\s/g, "{")
-				.replace(/\s\}/g, "}");
+				.replace(/{\s/g, "{")
+				.replace(/\s}/g, "}");
 		it("current props", done => {
 			test({
 				clearCss,
@@ -181,7 +194,7 @@ describe("postcss-icon", () => {
 					display: block;
 				}
 				`,
-				plugins: postcssIcon(exampleData[1]),
+				plugins: postcssIcon({ custom: exampleData[1] }),
 				done
 			});
 		});
@@ -210,14 +223,17 @@ describe("postcss-icon", () => {
 				}
 				`,
 				plugins: postcssIcon({
-					prefix: "",
-					data: {
-						mail: [
-							".extend{ color: gold; }",
-							".extend,.extend span { position: relative; }",
-							".extend::before, .extend:after { position: absolute; }",
-							".extend { background: red; }"
-						]
+					custom: {
+						type: 'css',
+						prefix: "",
+						data: {
+							mail: [
+								".extend{ color: gold; }",
+								".extend,.extend span { position: relative; }",
+								".extend::before, .extend:after { position: absolute; }",
+								".extend { background: red; }"
+							]
+						}
 					}
 				}),
 				done
@@ -233,7 +249,7 @@ describe("postcss-icon", () => {
 				done
 			});
 		});
-		describe("array", () => {
+		describe("object", () => {
 			describe("", () => {
 				it("length === 1", done => {
 					test({
@@ -250,7 +266,7 @@ describe("postcss-icon", () => {
 							height: 18px;
 							box-sizing: border-box;
 						}`,
-						plugins: postcssIcon([exampleData[0]]),
+						plugins: postcssIcon({ custom: exampleData[0] }),
 						done
 					});
 				});
@@ -274,61 +290,11 @@ describe("postcss-icon", () => {
 							/* @icon: '400' */
 						}
 							`,
-						plugins: postcssIcon([
-							exampleData[0],
-							exampleData[1],
-							exampleData[2]
-						]),
-						done
-					});
-				});
-			});
-		});
-		describe("arguments", () => {
-			describe("", () => {
-				it("length === 1", done => {
-					test({
-						input: ".icon.mail { @icon: vendor-mail; }",
-						output: `.icon.mail {
-							display: inline-block;
-						}`,
-						plugins: postcssIcon(exampleData[1]),
-						done
-					});
-				});
-				it("length > 1", done => {
-					test({
-						input:
-							".icon.mail { @icon: mail; } .icon.next { @icon: vendor2-next; } .icon.404 { @icon: '400'; }",
-						output: `
-						.icon.mail::after {
-							color: gold;
-						}
-						.icon.mail::before {
-							position: absolute;
-						}
-						.icon.mail {
-							width: 28px;
-							height: 18px;
-							box-sizing: border-box;
-						}
-						.icon.next::after,
-						.icon.next::before {
-							content: "";
-							pointer-events: none;
-						}
-						.icon.next {
-							box-sizing: border-box;
-						}
-						.icon.404 {
-							/* @icon: '400' */
-						}
-						`,
-						plugins: postcssIcon(
-							exampleData[0],
-							exampleData[1],
-							exampleData[2]
-						),
+						plugins: postcssIcon({
+							c: exampleData[0],
+							c1: exampleData[1],
+							c2: exampleData[2]
+						}),
 						done
 					});
 				});
@@ -338,7 +304,7 @@ describe("postcss-icon", () => {
 
 	it("Madia Query", done => {
 		test({
-			plugins: postcssIcon(exampleData[2]),
+			plugins: postcssIcon({name:exampleData[2]}),
 			input: `
 				.icon2 {
 					@icon: vendor2-next;

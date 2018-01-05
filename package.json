@@ -7,14 +7,18 @@
 	"author": "David ♥ <vamnemne@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"lint": "eslint ./**/*.js",
-		"precompile": "npm run lint",
+		"lint": "eslint ./**/*.js --fix",
+		"__precompile": "npm run lint",
 		"compile": "babel src --out-dir lib",
+		"watch": "npm run compile -- --watch",
 		"pretest": "npm run compile",
 		"test": "mocha --compilers js:babel-register ./test/test.mjs"
 	},
 	"dependencies": {
-		"postcss": "6"
+		"fonteditor-core": "^1.0.2",
+		"postcss": "6",
+		"regenerator-runtime": "^0.11.1",
+		"ttf2woff2": "^2.0.3"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
@@ -26,6 +30,9 @@
 		"chai": "3.5.0",
 		"eslint": "3.19.0",
 		"mocha": "3.4.2",
+		"postcss-icon.font-awesome-4": "/mnt/hdd/web/github/postcss-icon.font-awesome-v4",
+		"postcss-icon.font-awesome-v4": "^0.0.1",
+		"postcss-icon.material-design": "^0.0.2",
 		"postcss-merge-rules": "^4.0.0-rc.2"
 	},
 	"keywords": [

@@ -1,0 +1,77 @@
+@font-face {
+	font-family: 'FontAwesome b31b';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAANAAAoAAAAACAAAAAL4AAQBywAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKdHkBNgIkAwgLBgAEIAWJAAcvG0sHEYXMkP08MG6cx4q59CwfdDmN/CQX6j0HEa1l1TMTIpbEFkjlXKIIwAKqCE8yeQDQhO43AF7p7DQyTNH6JmIrnxAxejy11GzV9f+5d/oH8W2QhTr2a2/rRGNMsAUSZ+Ga1I+iMLGMQ824ZXgHtVc3BGD0lWxiB2bV5ADz4WKqB2QZS8aTos6h7h6KvrO32mNhjwCemqbInEm7plA4kIeOhYRiiAQMBoHvLMt3e6Q9/IBij/WIAsAAGggD0miTQf0BMcav0W3EdXDEY2hEOS8/AbcmZ+Nq56xdZOq5y8r7jiu7yCsHu03sOcQecv/8dtxryF1UncfFJ/z/l/3PSrReff9OOwAggJHbpxfeyTaPvD+OLg4APMm5mw3wLLZtHps1qS/tARwnGBS4DEsN2CjWl2IlgNKTdCJyBVD4tdqrAEGAIqxIoMS3NWXMJxcETzJSKBwohMaLChg8aYQd3rTCHheG4EA1s3DEladwwpmPcMGPT7fdCRfQiHECmiWcghApo1C4yy400XIGQ6TcgR2x8hn2+CtPOHCs4uFIoLqGE77qA1xIVr9T3cnT4Y0JP8Mn8jRTmOKHYIFN/IfA87sOjKoKqr+hBSFL8qHYmXOjoy9ZrglM6Jszpe8KZX7YX7ej8fBwnc+ex8P5SrL5TmJzbqDt9Byv72Zk9FgR0vIBmMQLys5YRjCnuKVImwUSFlCfaHeACsZUo5SAqpKbd31qw5pHZGeoE1qtNi0pPVN9DV23rRHh2U7OFTa36uLNjSW3NeHXX/I0U5jih2CBTfyHwPO7DowqexhakM1lkiVpeSl25tzo6AsHuO7zNSb0zZnSd4UyP+yv29F4yJZe57PnUaAz3UNfdB85YHOST6Ht9Bxv7l20zzxWhLRqFXySBGWfMrDjXhVainTEUMKtVOSmZLRVoIIxidIoJZBC87l598A2ihxFM1TtIwnbRu94UpT1l3gNXVsz9ii2IWeUPhGF3Gom1KzW5P5JXVlnFQpEObZgRIa5BA==') format('woff2'), url(../fonts/style-icons-font-awesome-v4.woff) format('woff'), url(../fonts/style-icons-font-awesome-v4.ttf) format('truetype'), url(../fonts/style-icons-font-awesome-v4.svg) format('svg'), url(../fonts/style-icons-font-awesome-v4.eot) format('embedded-opentype');
+}
+
+.fa, .footer__social-fb::before {
+	display: inline-block;
+	/* font-family: FontAwesome; */
+	font-size: inherit;
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'FontAwesome b31b';
+}
+
+@font-face {
+	font-family: 'Material Icons 51b3';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAANMAAoAAAAAByAAAAL/AAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgloKglyCLAE2AiQDDAsMAAQgBYUmByAbMQYRRYzJviqwmxcvGCGMIJQYERuYUR1GUI8Z7peqGzoTX93z4fXeP0FFbDAncIWT1jeVR2uCRvhhK/i9df48PJ36/l2S7oFjUrG4wApUoxoWoSaxYm338wmVeEh638M8uSexTOgMnRJpBEdaZ/72jm4a3a/+0jAetOzye5ggGmpB43bFM/g/13x+xSfw2Q+4io7uVjSKbtwbaPFm0RiFITIfkG7Q3eBAX/kGsDRiADJAxVJ3ABHRzm8G2gAaJQObmlIHwGIT97z5g9AAIBgABRhpzgnAeJpxsyUVTHLMGIsbQBFNJKRFZqX86PxB/tdgzDVLSmwkGhJ1S/6BoGRhR8oAAEXPUwagAyHsYhqBjIxgWRN5FK/LyispMUp0un+mYo44LWA8tucRRgFuRJFIKH5cqfBmzmQ0KhUypiREpC8lB9yhcMxLBDEnIhK+eIXi78ktPPyKsMRp2y+SiHBKVdz4dyZkKCqKGWluCk/XSPumVQWLckXUY+CWe7L/Te762CvsK8R4zjGRaAxfZr9T76L1wmnXUM/WJn6bVZ786Z3meMZvmw0N7gEEquWMrTTCQ1aOGpNpuOhyilgoOVqQ5IBm9we/evmLUsv+gaJjFBK4UsalA72OAlD07dnHtVyBWv0bFw0A7h9nzkGAxLryAw2gxFAH3UVugnCvDY2T3lxguCB0S9vXyVZQ2lBH6EIQd0ffb7p2PVIkYcLJIGl4QXY2gMLEG0o9X1dl5ne6kS7i4w8hHAJI+mFB9g5S0Y0JpXX0ocolfsX1psrZJA4K3I0Qw8J9n4M7ZrRoFit8BoV8cIwxN1LZqD/Diwo4bzBebuPcw9v7UQpILIerPCigymVTzBVaFcfv3iBLwwmWA+gM0daFv+DzEy6vpMSpEeGAAtYVgjCwYH1uGliHMWQxRanCZVAgPeAwjLGuWBQPDu2bgrPQAjjbpqwTN8PS3qV05EoCx5EsTrJqBcvRna4yk3jTcEDxAMoGScXpRgvBdsMBLI81W4/N/fUj6oQtlwAAAA==') format('woff2'), url(../fonts/style-icons-material-design.woff) format('woff'), url(../fonts/style-icons-material-design.ttf) format('truetype'), url(../fonts/style-icons-material-design.svg) format('svg'), url(../fonts/style-icons-material-design.eot) format('embedded-opentype');
+}
+
+.material-icons, .header__home::before, .header__call::before, .header__account::before, .header__help::before {
+	/* font-family: 'Material Icons'; */
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+	font-family: 'Material Icons 51b3';
+}
+
+.bad-name::before{
+    /* @icon: bad-name */
+}
+
+.header__home::before{
+	content: '\E88A';
+}
+
+.header__call::before{
+	content: '\E0B0';
+}
+
+.header__account::before{
+	content: '\E853';
+}
+
+.header__help::before{
+	content: '\E887';
+}
+
+.footer__social-fb::before{
+	content: '\F09A';
+}
