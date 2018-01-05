@@ -17,8 +17,6 @@ var _fs2 = _interopRequireDefault(_fs);
 
 var _os = require("os");
 
-var _util = require("util");
-
 var _path = require("path");
 
 var _postcss = require("postcss/lib/postcss");
@@ -41,11 +39,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import regeneratorRuntime from "regenerator-runtime/runtime";
+var _require = require("util"),
+    promisify = _require.promisify;
 
-var writeFileAsync = (0, _util.promisify)(_fs2.default.writeFile);
-var readFileAsync = (0, _util.promisify)(_fs2.default.readFile);
-var accessAsycn = (0, _util.promisify)(_fs2.default.access);
+if (!promisify) {
+	promisify = require("util.promisify");
+}
+var writeFileAsync = promisify(_fs2.default.writeFile);
+var readFileAsync = promisify(_fs2.default.readFile);
+var accessAsycn = promisify(_fs2.default.access);
 
 var FontIconSet = exports.FontIconSet = function (_IconSet) {
 	_inherits(FontIconSet, _IconSet);
@@ -383,8 +385,8 @@ var CustomFont = function () {
 
 			this._hash = (0, _helps.generateHash)(subset.toString());
 
-			var _require = require("fonteditor-core"),
-			    Font = _require.Font;
+			var _require2 = require("fonteditor-core"),
+			    Font = _require2.Font;
 
 			this._font = Font.create(this._buffer, {
 				type,
@@ -399,93 +401,243 @@ var CustomFont = function () {
 			return this;
 		}
 	}, {
+		key: "createFontFace",
+		value: function () {
+			var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(_ref8) {
+				var output = _ref8.output,
+				    fromPath = _ref8.fromPath,
+				    toPath = _ref8.toPath,
+				    outputPath = _ref8.outputPath;
+				var inline, formats, resolve, baseOpt, urlsStr;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								inline = output.inline, formats = output.formats, resolve = output.resolve;
+								baseOpt = {
+									resolve,
+									fromPath,
+									toPath,
+									outputPath
+								};
+								urlsStr = "";
+
+								if (!Array.isArray(inline)) {
+									_context2.next = 10;
+									break;
+								}
+
+								_context2.next = 6;
+								return Promise.all([this._inlineFontSrc(inline), this._fileFontSrc(_extends({
+									formats: formats.filter(function (e) {
+										return !inline.includes(e);
+									})
+								}, baseOpt))]);
+
+							case 6:
+								_context2.t0 = Boolean;
+								urlsStr = _context2.sent.filter(_context2.t0).join(", ");
+								_context2.next = 19;
+								break;
+
+							case 10:
+								if (!(inline === true)) {
+									_context2.next = 16;
+									break;
+								}
+
+								_context2.next = 13;
+								return this._inlineFontSrc(formats);
+
+							case 13:
+								urlsStr = _context2.sent;
+								_context2.next = 19;
+								break;
+
+							case 16:
+								_context2.next = 18;
+								return this._fileFontSrc(_extends({
+									formats
+								}, baseOpt));
+
+							case 18:
+								urlsStr = _context2.sent;
+
+							case 19:
+								return _context2.abrupt("return", this._createFontFace(urlsStr));
+
+							case 20:
+							case "end":
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
+
+			function createFontFace(_x2) {
+				return _ref9.apply(this, arguments);
+			}
+
+			return createFontFace;
+		}()
+	}, {
+		key: "_inlineFontSrc",
+		value: function _inlineFontSrc(formats) {
+			var _this2 = this;
+
+			var tmp = formats.map(function () {
+				var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(format) {
+					var url;
+					return regeneratorRuntime.wrap(function _callee3$(_context3) {
+						while (1) {
+							switch (_context3.prev = _context3.next) {
+								case 0:
+									_context3.next = 2;
+									return _this2.fontToBase64(format);
+
+								case 2:
+									url = _context3.sent;
+									return _context3.abrupt("return", `url('${url}') ${CustomFont.getFormat(format)}`);
+
+								case 4:
+								case "end":
+									return _context3.stop();
+							}
+						}
+					}, _callee3, _this2);
+				}));
+
+				return function (_x3) {
+					return _ref10.apply(this, arguments);
+				};
+			}());
+			return Promise.all(tmp);
+		}
+	}, {
+		key: "toBuffer",
+		value: function () {
+			var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(type) {
+				var cache, buffer;
+				return regeneratorRuntime.wrap(function _callee4$(_context4) {
+					while (1) {
+						switch (_context4.prev = _context4.next) {
+							case 0:
+								_context4.next = 2;
+								return this._getFromCache(type);
+
+							case 2:
+								cache = _context4.sent;
+
+								if (!cache) {
+									_context4.next = 5;
+									break;
+								}
+
+								return _context4.abrupt("return", cache);
+
+							case 5:
+								buffer = this._toBuffer(type);
+								_context4.next = 8;
+								return this._saveToCache(buffer, type);
+
+							case 8:
+								return _context4.abrupt("return", buffer);
+
+							case 9:
+							case "end":
+								return _context4.stop();
+						}
+					}
+				}, _callee4, this);
+			}));
+
+			function toBuffer(_x4) {
+				return _ref11.apply(this, arguments);
+			}
+
+			return toBuffer;
+		}()
+	}, {
 		key: "getTmpName",
-
-
-		// async createFontFace({ output, fromPath, toPath, outputPath }) {
-		// 	const { inline, formats, resolve } = output;
-		// 	const baseOpt = {
-		// 		resolve,
-		// 		fromPath,
-		// 		toPath,
-		// 		outputPath
-		// 	};
-		// 	let urlsStr = "";
-
-		// 	if (Array.isArray(inline)) {
-		// 		// mixed inline + file
-		// 		urlsStr = (await Promise.all([
-		// 			this._inlineFontSrc(inline),
-		// 			this._fileFontSrc({
-		// 				formats: formats.filter(e => !inline.includes(e)),
-		// 				...baseOpt
-		// 			})
-		// 		]))
-		// 			.filter(Boolean)
-		// 			.join(", ");
-		// 	} else if (inline === true) {
-		// 		// inline all formats
-		// 		urlsStr = await this._inlineFontSrc(formats);
-		// 	} else {
-		// 		// save all formats
-		// 		urlsStr = await this._fileFontSrc({
-		// 			formats,
-		// 			...baseOpt
-		// 		});
-		// 	}
-
-		// 	return this._createFontFace(urlsStr);
-		// }
-
-		// _inlineFontSrc(formats) {
-		// 	return Promise.all(
-		// 		formats.map(
-		// 			async format =>
-		// 				`url('${await this.fontToBase64(
-		// 					format
-		// 				)}') ${CustomFont.getFormat(format)}`
-		// 		)
-		// 	);
-		// }
-
-		// async toBuffer(type) {
-		// 	const cache = await this._getFromCache(type);
-
-		// 	if (cache) {
-		// 		return cache;
-		// 	}
-
-		// 	const buffer = this._toBuffer(type);
-
-		// 	await this._saveToCache(buffer, type);
-
-		// 	return buffer;
-		// }
-
 		value: function getTmpName(type) {
 			return (0, _path.join)((0, _os.tmpdir)(), `${_config.NAME}-${this._name}-${this._hash}.${type}`);
 		}
+	}, {
+		key: "_saveToCache",
+		value: function () {
+			var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(buffer, type) {
+				var cacheFile;
+				return regeneratorRuntime.wrap(function _callee5$(_context5) {
+					while (1) {
+						switch (_context5.prev = _context5.next) {
+							case 0:
+								cacheFile = this.getTmpName(type);
+								_context5.prev = 1;
+								_context5.next = 4;
+								return writeFileAsync(cacheFile, buffer);
 
-		// async _saveToCache(buffer, type) {
-		// 	const cacheFile = this.getTmpName(type);
-		// 	try {
-		// 		await writeFileAsync(cacheFile, buffer); // save to chache folder
-		// 		return true;
-		// 	} catch (e) {
-		// 		return false;
-		// 	}
-		// }
+							case 4:
+								return _context5.abrupt("return", true);
 
-		// async _getFromCache(type) {
-		// 	const cacheFile = this.getTmpName(type);
-		// 	try {
-		// 		await accessAsycn(cacheFile, fs.constants.F_OK | fs.constants.R_OK);
-		// 		return await readFileAsync(cacheFile);
-		// 	} catch (e) {
-		// 		return false;
-		// 	}
-		// }
+							case 7:
+								_context5.prev = 7;
+								_context5.t0 = _context5["catch"](1);
+								return _context5.abrupt("return", false);
 
+							case 10:
+							case "end":
+								return _context5.stop();
+						}
+					}
+				}, _callee5, this, [[1, 7]]);
+			}));
+
+			function _saveToCache(_x5, _x6) {
+				return _ref12.apply(this, arguments);
+			}
+
+			return _saveToCache;
+		}()
+	}, {
+		key: "_getFromCache",
+		value: function () {
+			var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(type) {
+				var cacheFile;
+				return regeneratorRuntime.wrap(function _callee6$(_context6) {
+					while (1) {
+						switch (_context6.prev = _context6.next) {
+							case 0:
+								cacheFile = this.getTmpName(type);
+								_context6.prev = 1;
+								_context6.next = 4;
+								return accessAsycn(cacheFile, _fs2.default.constants.F_OK | _fs2.default.constants.R_OK);
+
+							case 4:
+								_context6.next = 6;
+								return readFileAsync(cacheFile);
+
+							case 6:
+								return _context6.abrupt("return", _context6.sent);
+
+							case 9:
+								_context6.prev = 9;
+								_context6.t0 = _context6["catch"](1);
+								return _context6.abrupt("return", false);
+
+							case 12:
+							case "end":
+								return _context6.stop();
+						}
+					}
+				}, _callee6, this, [[1, 9]]);
+			}));
+
+			function _getFromCache(_x7) {
+				return _ref13.apply(this, arguments);
+			}
+
+			return _getFromCache;
+		}()
 	}, {
 		key: "_toBuffer",
 		value: function _toBuffer(type) {
@@ -496,25 +648,66 @@ var CustomFont = function () {
 
 			return this._font.write({ type });
 		}
+	}, {
+		key: "fontToBase64",
+		value: function () {
+			var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(type) {
+				var data, _data;
 
-		// async fontToBase64(type) {
-		// 	if (type === "woff2") {
-		// 		return `data:application/font-woff2;charset=utf-8;base64,${(await this.toBuffer(
-		// 			"woff2"
-		// 		)).toString("base64")}`;
-		// 	} else if (type === "ttf") {
-		// 		return `data:font/truetype;charset=utf-8;base64,${(await this.toBuffer(
-		// 			"ttf"
-		// 		)).toString("base64")}`;
-		// 	} else if (type === "woff") {
-		// 		return this._font.toBase64({ type }); // support: woff ; bad support: ttf,eot,svg
-		// 	}
+				return regeneratorRuntime.wrap(function _callee7$(_context7) {
+					while (1) {
+						switch (_context7.prev = _context7.next) {
+							case 0:
+								if (!(type === "woff2")) {
+									_context7.next = 7;
+									break;
+								}
 
-		// 	throw Error(
-		// 		`[${NAME}] Inline font not supported for this formats : ${type}`
-		// 	);
-		// }
+								_context7.next = 3;
+								return this.toBuffer("woff2");
 
+							case 3:
+								data = _context7.sent;
+								return _context7.abrupt("return", `data:application/font-woff2;charset=utf-8;base64,${data.toString("base64")}`);
+
+							case 7:
+								if (!(type === "ttf")) {
+									_context7.next = 14;
+									break;
+								}
+
+								_context7.next = 10;
+								return this.toBuffer("ttf");
+
+							case 10:
+								_data = _context7.sent;
+								return _context7.abrupt("return", `data:font/truetype;charset=utf-8;base64,${_data.toString("base64")}`);
+
+							case 14:
+								if (!(type === "woff")) {
+									_context7.next = 16;
+									break;
+								}
+
+								return _context7.abrupt("return", this._font.toBase64({ type }));
+
+							case 16:
+								throw Error(`[${_config.NAME}] Inline font not supported for this formats : ${type}`);
+
+							case 17:
+							case "end":
+								return _context7.stop();
+						}
+					}
+				}, _callee7, this);
+			}));
+
+			function fontToBase64(_x8) {
+				return _ref14.apply(this, arguments);
+			}
+
+			return fontToBase64;
+		}()
 	}, {
 		key: "getHash",
 		value: function getHash() {
@@ -522,56 +715,104 @@ var CustomFont = function () {
 
 			return this._hash.substr(0, len);
 		}
+	}, {
+		key: "_fileFontSrc",
+		value: function () {
+			var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(_ref15) {
+				var _this3 = this;
 
-		// async _fileFontSrc({
-		// 	formats,
-		// 	fromPath,
-		// 	toPath,
-		// 	outputPath = ".",
-		// 	resolve
-		// }) {
-		// 	const files = await Promise.all(
-		// 		formats.map(async format => {
-		// 			let result;
+				var formats = _ref15.formats,
+				    fromPath = _ref15.fromPath,
+				    toPath = _ref15.toPath,
+				    _ref15$outputPath = _ref15.outputPath,
+				    outputPath = _ref15$outputPath === undefined ? "." : _ref15$outputPath,
+				    resolve = _ref15.resolve;
+				return regeneratorRuntime.wrap(function _callee9$(_context9) {
+					while (1) {
+						switch (_context9.prev = _context9.next) {
+							case 0:
+								_context9.next = 2;
+								return Promise.all(formats.map(function () {
+									var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(format) {
+										var result, _pathParse, name, outPutFile, relativeUrl;
 
-		// 			if (isFunction(resolve)) {
-		// 				result = this._resolve({
-		// 					fromPath,
-		// 					format
-		// 				});
-		// 			} else {
-		// 				const { name } = pathParse(fromPath);
-		// 				result = `${outputPath}/${name}-icons-${
-		// 					this._name
-		// 				}.${format}`;
-		// 			}
+										return regeneratorRuntime.wrap(function _callee8$(_context8) {
+											while (1) {
+												switch (_context8.prev = _context8.next) {
+													case 0:
+														result = void 0;
 
-		// 			let outPutFile = "";
-		// 			let relativeUrl = false;
 
-		// 			if (isString(result)) {
-		// 				outPutFile = result;
-		// 				relativeUrl = pathRelative(
-		// 					pathParse(toPath || fromPath).dir,
-		// 					outPutFile
-		// 				);
-		// 			} else {
-		// 				outPutFile = result.file;
-		// 				relativeUrl = result.url;
-		// 			}
+														if ((0, _helps.isFunction)(resolve)) {
+															result = _this3._resolve({
+																fromPath,
+																format
+															});
+														} else {
+															_pathParse = (0, _path.parse)(fromPath), name = _pathParse.name;
 
-		// 			await writeFileAsync(
-		// 				outPutFile,
-		// 				await await this.toBuffer(format)
-		// 			);
+															result = `${outputPath}/${name}-icons-${_this3._name}.${format}`;
+														}
 
-		// 			return `url(${relativeUrl}) ${CustomFont.getFormat(format)}`;
-		// 		})
-		// 	);
+														outPutFile = "";
+														relativeUrl = false;
 
-		// 	return files.join(", ");
-		// }
 
+														if ((0, _helps.isString)(result)) {
+															outPutFile = result;
+															relativeUrl = (0, _path.relative)((0, _path.parse)(toPath || fromPath).dir, outPutFile);
+														} else {
+															outPutFile = result.file;
+															relativeUrl = result.url;
+														}
+
+														_context8.t0 = writeFileAsync;
+														_context8.t1 = outPutFile;
+														_context8.next = 9;
+														return _this3.toBuffer(format);
+
+													case 9:
+														_context8.next = 11;
+														return _context8.sent;
+
+													case 11:
+														_context8.t2 = _context8.sent;
+														_context8.next = 14;
+														return (0, _context8.t0)(_context8.t1, _context8.t2);
+
+													case 14:
+														return _context8.abrupt("return", `url(${relativeUrl}) ${CustomFont.getFormat(format)}`);
+
+													case 15:
+													case "end":
+														return _context8.stop();
+												}
+											}
+										}, _callee8, _this3);
+									}));
+
+									return function (_x11) {
+										return _ref17.apply(this, arguments);
+									};
+								}()));
+
+							case 2:
+								return _context9.abrupt("return", _context9.sent.join(", "));
+
+							case 3:
+							case "end":
+								return _context9.stop();
+						}
+					}
+				}, _callee9, this);
+			}));
+
+			function _fileFontSrc(_x10) {
+				return _ref16.apply(this, arguments);
+			}
+
+			return _fileFontSrc;
+		}()
 	}, {
 		key: "_createFontFace",
 		value: function _createFontFace(srcStr) {

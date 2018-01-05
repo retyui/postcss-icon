@@ -1,8 +1,10 @@
 import fs from "fs";
 import { tmpdir } from "os";
-import { promisify } from "util";
-// import regeneratorRuntime from "regenerator-runtime/runtime";
 
+let { promisify } = require("util");
+if (!promisify) {
+	promisify = require("util.promisify");
+}
 const writeFileAsync = promisify(fs.writeFile);
 const readFileAsync = promisify(fs.readFile);
 const accessAsycn = promisify(fs.access);
@@ -223,11 +225,11 @@ class CustomFont {
 		return this._createFontFace(urlsStr);
 	}
 
-	_inlineFontSrc(formats) {////////////////
-		function getStr(url, format){
-			`url('${url}') ${CustomFont.getFormat(format)}`
-		}
-		const tmp = formats.map(async (format) => getStr(await this.fontToBase64(format), format));
+	_inlineFontSrc(formats) {
+		const tmp = formats.map(async format => {
+			const url = await this.fontToBase64(format);
+			return `url('${url}') ${CustomFont.getFormat(format)}`;
+		});
 		return Promise.all(tmp);
 	}
 
@@ -283,13 +285,15 @@ class CustomFont {
 
 	async fontToBase64(type) {
 		if (type === "woff2") {
-			return `data:application/font-woff2;charset=utf-8;base64,${(await this.toBuffer(
-				"woff2"
-			)).toString("base64")}`;
+			const data = await this.toBuffer("woff2");
+			return `data:application/font-woff2;charset=utf-8;base64,${data.toString(
+				"base64"
+			)}`;
 		} else if (type === "ttf") {
-			return `data:font/truetype;charset=utf-8;base64,${(await this.toBuffer(
-				"ttf"
-			)).toString("base64")}`;
+			const data = await this.toBuffer("ttf");
+			return `data:font/truetype;charset=utf-8;base64,${data.toString(
+				"base64"
+			)}`;
 		} else if (type === "woff") {
 			return this._font.toBase64({ type }); // support: woff ; bad support: ttf,eot,svg
 		}

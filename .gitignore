@@ -16,5 +16,7 @@ node_modules/
 *.tgz
 
 lib/
+lib-old/
 _local/
 .idea/
+test/*.js

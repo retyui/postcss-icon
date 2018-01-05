@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import postcss from "postcss";
-import postcssIcon from "../lib/index";
-
+import postcssIcon from "../postcss-icon.js";
 
 function clearStr(str) {
 	return str.replace(/\s/g, "");
@@ -20,45 +19,47 @@ function test({ input, output, done, plugins, clearCss = true }) {
 				clearCss === true
 					? clearStr(output)
 					: typeof clearCss === "function"
-					? clearCss(output)
-					: output;
+						? clearCss(output)
+						: output;
 
-			expect(css)
-				.to
-				.eql(output);
+			expect(css).to.eql(output);
 			done();
 		});
 }
 
 const exampleData = [
 	{
-		type: 'css',
+		type: "css",
 		prefix: "",
-		data: {
-			mail: [
-				".extend::after { color: gold; }",
-				".extend { width: 28px; height: 18px; }",
-				".extend::before { position: absolute; }",
-				".extend { box-sizing: border-box; }"
+		styles: new Map([
+			[
+				"mail",
+				[
+					".extend::after { color: gold; }",
+					".extend { width: 28px; height: 18px; }",
+					".extend::before { position: absolute; }",
+					".extend { box-sizing: border-box; }"
+				]
 			]
-		}
+		])
 	},
 	{
-		type: 'css',
+		type: "css",
 		prefix: "vendor-",
-		data: {
-			mail: [".extend { display: inline-block; }"]
-		}
+		styles: new Map([["mail", [".extend { display: inline-block; }"]]])
 	},
 	{
-		type: 'css',
+		type: "css",
 		prefix: "vendor2-",
-		data: {
-			next: [
-				".extend::after, .extend::before { content: \"\"; pointer-events: none; }",
-				".extend { box-sizing: border-box; }"
+		styles: new Map([
+			[
+				"next",
+				[
+					'.extend::after, .extend::before { content: ""; pointer-events: none; }',
+					".extend { box-sizing: border-box; }"
+				]
 			]
-		}
+		])
 	}
 ];
 
@@ -132,16 +133,15 @@ describe("postcss-icon", () => {
 					}
 				`,
 				plugins: postcssIcon({
-						custom1: {
-							...exampleData[1],
-							prefix: "dubl-"
-						},
-						custom2: {
-							...exampleData[0],
-							prefix: "dubl-"
-						}
+					custom1: {
+						...exampleData[1],
+						prefix: "dubl-"
+					},
+					custom2: {
+						...exampleData[0],
+						prefix: "dubl-"
 					}
-				),
+				}),
 				done
 			});
 		});
@@ -224,16 +224,19 @@ describe("postcss-icon", () => {
 				`,
 				plugins: postcssIcon({
 					custom: {
-						type: 'css',
+						type: "css",
 						prefix: "",
-						data: {
-							mail: [
-								".extend{ color: gold; }",
-								".extend,.extend span { position: relative; }",
-								".extend::before, .extend:after { position: absolute; }",
-								".extend { background: red; }"
+						styles: new Map([
+							[
+								"mail",
+								[
+									".extend{ color: gold; }",
+									".extend,.extend span { position: relative; }",
+									".extend::before, .extend:after { position: absolute; }",
+									".extend { background: red; }"
+								]
 							]
-						}
+						])
 					}
 				}),
 				done
@@ -304,7 +307,7 @@ describe("postcss-icon", () => {
 
 	it("Madia Query", done => {
 		test({
-			plugins: postcssIcon({name:exampleData[2]}),
+			plugins: postcssIcon({ name: exampleData[2] }),
 			input: `
 				.icon2 {
 					@icon: vendor2-next;

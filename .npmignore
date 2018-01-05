@@ -10,6 +10,7 @@ appveyor.yml
 logo.png
 draw.png
 yarn.lock
+test/*.js
 
 .idea/
 _local/
