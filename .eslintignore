@@ -2,5 +2,5 @@ lib/
 test/
 parser/
 _local/
-examples/
+examples/*
 lib-old/

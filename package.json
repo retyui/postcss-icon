@@ -7,13 +7,14 @@
 	"author": "retyui <vamnemne@gmail.com>",
 	"license": "MIT",
 	"scripts": {
+		"clean": "rimraf ./test/test.js ./lib ./lib-old",
 		"lint": "eslint ./**/*.js --fix --quiet",
-		"precompile": "npm run lint",
-		"compile": "npm-run-all --parallel babel:*",
+		"precompile": "npm-run-all clean lint",
+		"compile": "npm-run-all --parallel babel:* testcompile",
 		"babel:modern": "cross-env BABEL_ENV=modern babel src --out-dir lib",
 		"babel:old": "cross-env BABEL_ENV=old babel src --out-dir lib-old",
 		"pretest": "npm run compile",
-		"test": "mocha test/test.js",
+		"test": "mocha ./test/test.js",
 		"testcompile": "cross-env BABEL_ENV=old babel test/test.mjs --out-file test/test.js"
 	},
 	"dependencies": {
@@ -37,7 +38,8 @@
 		"npm-run-all": "^4.1.2",
 		"postcss-icon.font-awesome-v4": "^0.0.1",
 		"postcss-icon.material-design": "^0.0.2",
-		"postcss-merge-rules": "^4.0.0-rc.2"
+		"postcss-merge-rules": "^4.0.0-rc.2",
+		"rimraf": "^2.6.2"
 	},
 	"keywords": [
 		"postcss",
