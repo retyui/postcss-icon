@@ -2,5 +2,6 @@ lib/
 test/
 parser/
 _local/
-examples/
+example/
 lib-old/
+postcss-icon.js

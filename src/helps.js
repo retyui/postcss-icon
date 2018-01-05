@@ -22,5 +22,12 @@ export function to16Number(n) {
 
 import crypto from "crypto";
 export function generateHash(raw) {
-	return crypto.createHash("md5").update(raw).digest("hex");
+	return crypto
+		.createHash("md5")
+		.update(raw)
+		.digest("hex");
+}
+
+export function isNumber(num) {
+	return !isNaN(parseFloat(num)) && typeof num !== "string";
 }

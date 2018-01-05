@@ -1,0 +1,7 @@
+.bad-name::before{
+    @icon: bad-name;
+}
+
+.header__home::before{
+    @icon: 'md-home';
+}

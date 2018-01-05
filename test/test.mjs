@@ -24,7 +24,7 @@ function test({ input, output, done, plugins, clearCss = true }) {
 
 			expect(css).to.eql(output);
 			done();
-		});
+		}).catch(e => console.log(e));
 }
 
 const exampleData = [
@@ -340,4 +340,22 @@ describe("postcss-icon", () => {
 			done
 		});
 	});
+
+	describe("Font", () => {
+		it("inline", done => {
+			test({
+				input: ".icon.mail { @icon: md-home; }",
+				output: "@font-face{font-family:\'MaterialIcons49901f\';font-style:normal;font-weight:400;src:url(\'data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAJsAAoAAAAABfwAAAIiAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKTFsBNgIkAwYLBgAEIAWFMgcgG04FEQUEyb4ssA1RC9q/ArWvyDFQoKNPyrgUP2ji9Ocmcvv1zUFFYzp7fwUihaQQFdsq9K0mUHU1AtC4KgQdYaKTwJYMplNLmRZrT1iW/L/2uiNyVAsH0tPsSzwvRn91bqk+FNjP1InN5AgWSzAA/udyereJPsgpHfAd7VXb1sbSArmXQGDRHhYlkhcINkwv+MqD8ARu6LSJA01rGRhLVkabIvbAiAtodmUCjr8VOTFt1gCEBAJ1VlIPBKeUdpe6CajKdCoBx4uRk1gsuM4N/kDFo58xABwIQA5QBBUf6pd7SkpIsQWfTV5Mlgvmk4mbs+aP5jczteN1Lp73v25e6j9f31oAAAGyx7vvqvsyuqOJSUc8/vzfA8B7dc9NFuhNgET6HJEahkLqh3+8DKBOniWMlLEWEnR/Jp2rhUrLZTpB5NFSgJHACARqmQYnjw2II42T4/HkcUZAngQscQFA1Ckw0tUFgRkNCz5MDnEUixDf9Ybve5LlrsH5jYLqOCKOMaCyUdjM9LovXulhRT0wq6s31KCZykiGm1sm9d9wO+v6kry5L1UHCicWpjUsTAvbY/xYYfUfdQ2SSU4J8kQZt/6AZpLlrsH5jYLqOCKOMaCyUdjM9JZIa+U+rKgHZnX11oiCntxaRjILWpoS9ZfNczvr+hqWtqRUHa40GycWtuQGS9PCTYsal5D+OFrDQEQ6crLEBtio8eo/6ZsGILbbhBYNAAA=\')format(\'woff2\');}.material-icons,.icon.mail{/*font-family:\'MaterialIcons\';*/font-weight:normal;font-style:normal;font-size:24px;/*Preferrediconsize*/display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;/*SupportforallWebKitbrowsers.*/-webkit-font-smoothing:antialiased;/*SupportforSafariandChrome.*/text-rendering:optimizeLegibility;/*SupportforFirefox.*/-moz-osx-font-smoothing:grayscale;/*SupportforIE.*/font-feature-settings:\'liga\';font-family:\'MaterialIcons49901f\';}.icon.mail{}",
+				plugins: postcssIcon({
+					md: {
+						prefix: 'md-',
+						...require("postcss-icon.material-design"),
+						output: { inline: true, formats: "woff2" },
+						cache: true
+					}
+				}),
+				done
+			});
+		});
+	})
 });

@@ -1,0 +1,33 @@
+/* Syntax @icon: 'prefix-name'; */
+.header__home::before{
+	@icon: 'md-home';
+}
+/* Syntax @icon: "prefix-name"; */
+.header__swap::before{
+	@icon: "md-swap-vert";
+}
+
+.header__swap:hover::before{
+	@icon: md-swap-vertical-circle;
+}
+
+/* Syntax @icon: prefix-name; */
+.header__account::before{
+	@icon: md-account-circle;
+}
+
+/* Syntax @icon prefix-name; */
+.header__help::before{
+	@icon md-help;
+}
+
+@media(min-width: 768px){
+	/* another icon set , prefix fa- */
+	.footer__social-fb::before{
+		@icon: fa-facebook;
+	}
+}
+
+.bad-name::before{
+	@icon: bad-name;
+}
