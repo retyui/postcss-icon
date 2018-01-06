@@ -1,0 +1,40 @@
+@font-face {
+	font-family: 'Material Icons 49901f';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAJoAAoAAAAABfAAAAIgAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKTFsBNgIkAwYLBgAEIAWFJgcgG0IFyJ4FdtMa/C8mBzPjZTWFfQTRWlY9OwECRagRFdsoNAqeUKlXbxShfB1hos9y22+awnUGu/sBE5rJ4WYhGKKhGKqhuTVnwXUoZM5vLCQZW8xj7lNANzklydm2yOgvsP+5nN5tog9ySgd8R3s0lq2NpQVyL4HAojVobEokLxBsGLukYZ4hJ/FeGbEf5zxbydIHXT6SsoLLHo1M5t/cv/RaEohiAmofFJgiUHq7i/MWUWWuBpksF+5flkqR2zFs8AdGOfecBDIKtDBdUMlDvZFzTU1Rk07CTPVpdQTBcSRe33T8Pu63z/Xx5iPzX57zXlr+X79OPA8CkX7UcWXjzfxDZdURp//67yf4N1ReronF3xiV+pyQGolCwuCPlyA6eRZLasZaQtDL6XofFiozl2kntGABSYU1KIw6IWvxQpk6Tw+Xa/MrRK7CmQ+AMBSVkNTHFBQOYl7Iw+RbKNMdH99Ubiy+rXE51VqqFpwqOJgl4Q7D5QfsRDC7b2xgYoN1j8XhSlusdUowcnYN5NYIemVHaf1k1wZfqiWCJ6JjUl3HFj3uMKrOX35j3Wh2oETJ8ETZb/wB3g0rTWqapLSAIyngwJhE0A4MTu4AdoSAuURqKsehBqr1UOHgkmobkZZObh5yzLEga57EJbOkDknVnkNSmxRrEl5nOglBh+24weIm8mASJPUC0o2ihu6MgI4bL2J9bNj+2j8JgdIjc1wxAQ==') format('woff2'), url(../fonts/admin-style-material-design.49901f.woff) format('woff');
+}
+
+.material-icons, .header__home::before {
+	/* font-family: 'Material Icons'; */
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+	font-family: 'Material Icons 49901f';
+}
+
+.bad-name::before{
+    /* @icon: bad-name */
+}
+
+.header__home::before{
+	content: '\E88A';
+}

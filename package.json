@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"fonteditor-core": "^1.0.0",
+		"mkdirp-promise": "^5.0.1",
 		"postcss": "^6.0.0",
 		"regenerator-runtime": "^0.11.1",
 		"ttf2woff2": "^2.0.0",

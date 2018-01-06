@@ -17,6 +17,5 @@ node_modules/
 
 lib/
 lib-old/
-_local/
 .idea/
 test/*.js

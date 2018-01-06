@@ -1,43 +1,29 @@
-import fs from "fs";
-import { tmpdir } from "os";
-
-let { promisify } = require("util");
-if (!promisify) {
-	promisify = require("util.promisify");
-}
-const writeFileAsync = promisify(fs.writeFile);
-const readFileAsync = promisify(fs.readFile);
-const accessAsycn = promisify(fs.access);
-
-import {
-	parse as pathParse,
-	relative as pathRelative,
-	join as pathJoin
-} from "path";
-
+import { parse as pathParse } from "path";
 import { decl, parse as postcssParse } from "postcss/lib/postcss";
 
 import { NAME } from "./config";
 import { IconSet } from "./IconSet";
-import { isFunction, isString, to16Number, generateHash } from "./helps.js";
+import { isString, to16Number } from "./helps.js";
+import { CustomFont } from "./CustomFont.js";
 
 export class FontIconSet extends IconSet {
-	constructor({ name, keymap, ttf, css, prefix, output = {} }) {
+	constructor({ name, keymap, ttf, css, prefix, output = {}, cache = false }) {
 		super();
 		this._name = name;
 		this._prefix = prefix;
 		this._keymap = keymap;
 		this._ttfBuffer = ttf;
 		this._css = postcssParse(css);
+		this._cache = cache;
 
 		this._output = {
 			fontFamily: "",
 			inline: "woff2",
 			formats: ["woff2", "woff"],
-			resolve: false,
 			// extractAll: () => {},
 			path: "",
-			filename: "../fonts/[name][style-name][hash].[ext]",
+			filename: "[css-name]-[set-name].[hash:4].[ext]",
+			// url: (fontFile, cssFile) => {},
 			...output
 		};
 		this.narmolizationOutput();
@@ -91,7 +77,9 @@ export class FontIconSet extends IconSet {
 	async applyIcons({ root, result }) {
 		const { from: fromPath, to: toPath } = result.opts;
 		const baseNode = this._css.nodes[0].clone();
-		const outputPath = this._output.path || pathParse(fromPath).dir;
+		const outputPath =
+			this._output.path || pathParse(toPath || fromPath).dir;
+
 		for (const nodesSet of this._linker.rootMap.values()) {
 			for (const [iconName, nodes] of nodesSet) {
 				this.processNodes({
@@ -104,9 +92,9 @@ export class FontIconSet extends IconSet {
 
 		const font = this.getCustomFont();
 		const fontFamilyStr = await font.createFontFace({
-			output: this._output,
-			toPath,
 			fromPath,
+			toPath,
+			output: this._output,
 			outputPath
 		});
 
@@ -151,7 +139,8 @@ export class FontIconSet extends IconSet {
 	getCustomFont() {
 		return new CustomFont(
 			this._name.replace(`${NAME}.`, ""),
-			this._ttfBuffer
+			this._ttfBuffer,
+			this._cache
 		).sliceGlyf({
 			type: "ttf",
 			subset: this.getSubSet()
@@ -159,221 +148,6 @@ export class FontIconSet extends IconSet {
 	}
 }
 
-class CustomFont {
-	constructor(name, buffer) {
-		this._name = name;
-		this._buffer = buffer;
-		this._font = null;
-		this._ff = "";
-		this._hash = "";
-	}
-
-	sliceGlyf({ type, subset }) {
-		this._hash = generateHash(subset.toString());
-
-		const { Font } = require("fonteditor-core");
-
-		this._font = Font.create(this._buffer, {
-			type,
-			subset
-		});
-
-		const defaultFontFamily = this._font.data.name.fontFamily;
-
-		this._ff = `${defaultFontFamily} ${this.getHash()}`;
-		this._font.data.name.fullName = this._ff;
-		this._font.data.name.fontFamily = this._ff;
-		return this;
-	}
-
-	get fontFamily() {
-		return this._ff;
-	}
-
-	async createFontFace({ output, fromPath, toPath, outputPath }) {
-		const { inline, formats, resolve } = output;
-		const baseOpt = {
-			resolve,
-			fromPath,
-			toPath,
-			outputPath
-		};
-		let urlsStr = "";
-
-		if (Array.isArray(inline)) {
-			// mixed inline + file
-			urlsStr = (await Promise.all([
-				this._inlineFontSrc(inline),
-				this._fileFontSrc({
-					formats: formats.filter(e => !inline.includes(e)),
-					...baseOpt
-				})
-			]))
-				.filter(Boolean)
-				.join(", ");
-		} else if (inline === true) {
-			// inline all formats
-			urlsStr = await this._inlineFontSrc(formats);
-		} else {
-			// save all formats
-			urlsStr = await this._fileFontSrc({
-				formats,
-				...baseOpt
-			});
-		}
-
-		return this._createFontFace(urlsStr);
-	}
-
-	_inlineFontSrc(formats) {
-		const tmp = formats.map(async format => {
-			const url = await this.fontToBase64(format);
-			return `url('${url}') ${CustomFont.getFormat(format)}`;
-		});
-		return Promise.all(tmp);
-	}
-
-	async toBuffer(type) {
-		const cache = await this._getFromCache(type);
-
-		if (cache) {
-			return cache;
-		}
-
-		const buffer = this._toBuffer(type);
-
-		await this._saveToCache(buffer, type);
-
-		return buffer;
-	}
-
-	getTmpName(type) {
-		return pathJoin(
-			tmpdir(),
-			`${NAME}-${this._name}-${this._hash}.${type}`
-		);
-	}
-
-	async _saveToCache(buffer, type) {
-		const cacheFile = this.getTmpName(type);
-		try {
-			await writeFileAsync(cacheFile, buffer); // save to chache folder
-			return true;
-		} catch (e) {
-			return false;
-		}
-	}
-
-	async _getFromCache(type) {
-		const cacheFile = this.getTmpName(type);
-		try {
-			await accessAsycn(cacheFile, fs.constants.F_OK | fs.constants.R_OK);
-			return await readFileAsync(cacheFile);
-		} catch (e) {
-			return false;
-		}
-	}
-
-	_toBuffer(type) {
-		if (type === "woff2") {
-			const ttf2woff2 = require("ttf2woff2");
-			return ttf2woff2(this._font.write({ type: "ttf" }));
-		}
-
-		return this._font.write({ type });
-	}
-
-	async fontToBase64(type) {
-		if (type === "woff2") {
-			const data = await this.toBuffer("woff2");
-			return `data:application/font-woff2;charset=utf-8;base64,${data.toString(
-				"base64"
-			)}`;
-		} else if (type === "ttf") {
-			const data = await this.toBuffer("ttf");
-			return `data:font/truetype;charset=utf-8;base64,${data.toString(
-				"base64"
-			)}`;
-		} else if (type === "woff") {
-			return this._font.toBase64({ type }); // support: woff ; bad support: ttf,eot,svg
-		}
-
-		throw Error(
-			`[${NAME}] Inline font not supported for this formats : ${type}`
-		);
-	}
-
-	getHash(len = 4) {
-		return this._hash.substr(0, len);
-	}
-
-	async _fileFontSrc({
-		formats,
-		fromPath,
-		toPath,
-		outputPath = ".",
-		resolve
-	}) {
-		return (await Promise.all(
-			formats.map(async format => {
-				let result;
-
-				if (isFunction(resolve)) {
-					result = this._resolve({
-						fromPath,
-						format
-					});
-				} else {
-					const { name } = pathParse(fromPath);
-					result = `${outputPath}/${name}-icons-${
-						this._name
-					}.${format}`;
-				}
-
-				let outPutFile = "";
-				let relativeUrl = false;
-
-				if (isString(result)) {
-					outPutFile = result;
-					relativeUrl = pathRelative(
-						pathParse(toPath || fromPath).dir,
-						outPutFile
-					);
-				} else {
-					outPutFile = result.file;
-					relativeUrl = result.url;
-				}
-
-				await writeFileAsync(
-					outPutFile,
-					await await this.toBuffer(format)
-				);
-
-				return `url(${relativeUrl}) ${CustomFont.getFormat(format)}`;
-			})
-		)).join(", ");
-	}
-
-	_createFontFace(srcStr) {
-		return `@font-face {\n\tfont-family: '${
-			this.fontFamily
-		}';\n\tfont-style: normal;\n\tfont-weight: 400;\n\tsrc: ${srcStr};\n}\n`;
-	}
-
-	static getFormat(type) {
-		return `format('${getFormatName(type)}')`;
-	}
-}
-
 function isAfterOrBeforeSelector(selector) {
 	return selector.includes(":after") || selector.includes(":before");
 }
-
-const getFormatName = (formats => {
-	return function getFormatName(format) {
-		return formats[format] ? formats[format] : format;
-	};
-})({
-	eot: "embedded-opentype",
-	ttf: "truetype"
-});

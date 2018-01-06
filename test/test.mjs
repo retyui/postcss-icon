@@ -340,4 +340,21 @@ describe("postcss-icon", () => {
 			done
 		});
 	});
+
+	describe("Font", () => {
+		it("inline", done => {
+			test({
+				input: ".icon.mail { @icon: md-home; }",
+				output: ".icon.mail { /* @icon: mail */ }",
+				plugins: postcssIcon({
+					md: {
+						prefix: 'md-',
+						...require("../../postcss-icon.material-design"),
+						output: { inline: true, formats: "woff2" }
+					}
+				}),
+				done
+			});
+		});
+	})
 });

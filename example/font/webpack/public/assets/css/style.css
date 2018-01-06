@@ -1,0 +1,150 @@
+@font-face {
+	font-family: 'FontAwesome b31b69';
+	font-style: normal;
+	font-weight: 400;
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1mb250LWF3ZXNvbWUtdjQuYjMxYi53b2ZmMiI7) format('woff2'), url(../fonts/style-font-awesome-v4.b31b.woff) format('woff'), url(../fonts/style-font-awesome-v4.b31b.ttf) format('truetype'), url(../fonts/style-font-awesome-v4.b31b.svg) format('svg'), url(../fonts/style-font-awesome-v4.b31b.eot) format('embedded-opentype');
+}
+.fa, .footer__social-fb::before, .footer__social-fb::before {
+	display: inline-block;
+	/* font-family: FontAwesome; */
+	font-size: inherit;
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'FontAwesome b31b69';
+}
+@font-face {
+	font-family: 'Material Icons 9e612d';
+	font-style: normal;
+	font-weight: 400;
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1tYXRlcmlhbC1kZXNpZ24uOWU2MS53b2ZmMiI7) format('woff2'), url(../fonts/style-material-design.9e61.woff) format('woff'), url(../fonts/style-material-design.9e61.ttf) format('truetype'), url(../fonts/style-material-design.9e61.svg) format('svg'), url(../fonts/style-material-design.9e61.eot) format('embedded-opentype');
+}
+.material-icons, .header__home::before, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before {
+	/* font-family: 'Material Icons'; */
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+	font-family: 'Material Icons 9e612d';
+}
+/* Syntax @icon: 'prefix-name'; */
+.header__home::before{
+	content: '\E88A';
+	content: '\E88A';
+}
+/* Syntax @icon: "prefix-name"; */
+.header__swap::before{
+	content: '\E8D5';
+	content: '\E8D5';
+}
+
+.header__swap:hover::before{
+	content: '\E8D6';
+	content: '\E8D6';
+}
+
+/* Syntax @icon: prefix-name; */
+.header__account::before{
+	content: '\E853';
+	content: '\E853';
+}
+
+/* Syntax @icon prefix-name; */
+.header__help::before{
+	content: '\E887';
+	content: '\E887';
+}
+
+@media(min-width: 768px){
+	/* another icon set , prefix fa- */
+	.footer__social-fb::before{
+		content: '\F09A';
+		content: '\F09A';
+	}
+}
+
+.bad-name::before{
+	/* @icon: bad-name */
+}
+@font-face {
+	font-family: 'Material Icons 9e612d';
+	font-style: normal;
+	font-weight: 400;
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9hZG1pbi1zdHlsZS1tYXRlcmlhbC1kZXNpZ24uOWU2MS53b2ZmMiI7) format('woff2'), url(../fonts/admin-style-material-design.9e61.woff) format('woff'), url(../fonts/admin-style-material-design.9e61.ttf) format('truetype'), url(../fonts/admin-style-material-design.9e61.svg) format('svg'), url(../fonts/admin-style-material-design.9e61.eot) format('embedded-opentype');
+}
+
+.material-icons, .header__home::before, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before, .header__home::before {
+	/* font-family: 'Material Icons'; */
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+	font-family: 'Material Icons 9e612d';
+}
+
+@font-face {
+	font-family: 'FontAwesome b31b69';
+	font-style: normal;
+	font-weight: 400;
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9hZG1pbi1zdHlsZS1mb250LWF3ZXNvbWUtdjQuYjMxYi53b2ZmMiI7) format('woff2'), url(../fonts/admin-style-font-awesome-v4.b31b.woff) format('woff'), url(../fonts/admin-style-font-awesome-v4.b31b.ttf) format('truetype'), url(../fonts/admin-style-font-awesome-v4.b31b.svg) format('svg'), url(../fonts/admin-style-font-awesome-v4.b31b.eot) format('embedded-opentype');
+}
+
+.fa, .footer__social-fb::before, .footer__social-fb::before {
+	display: inline-block;
+	/* font-family: FontAwesome; */
+	font-size: inherit;
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'FontAwesome b31b69';
+}
+
+.bad-name::before{
+    /* @icon: bad-name */
+}
+
+.header__home::before{
+	content: '\E88A';
+}

@@ -1,0 +1,80 @@
+@font-face {
+	font-family: 'FontAwesome b31b69';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAANEAAoAAAAACAAAAAL7AAQBywAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKdHkBNgIkAwgLBgAEIAWJAAcvG0sHEYXMkH1xYJ40/VgxLj2oUB90OZkEn+QG9Z6DiNay6pkOEUtiC6RyLpGAbIlUhCcJ/+9IgiZ0vwHwSmenkWGK1jcRW/mEiNHjqeXk7nNrtupq8/+5d/oH8W2QhTr2a2/rRGNMsAUSZ+Ga1I+iMLGMQ824ZXgHtVc3BKD2QfZxA93WEmA1XMwMgWxiyQRS1D8xOETVd+yt7ji4I4CnpikxZ7KuKRYOlGFjIbEoiYCiCHzHcXx3QNrDDyjuWI8YABSwQByQR5sU9QdENazTb8p3fCpgYsp4b74Gvy5v9XXztj6y8M5n633fg1vig4fbPu6c4w6lf357nnSULppu09Iz/v8r/udkOvdLAYAAKi+uU3UFlP3x9PEA4HXJq2KAt2m/D3A58/beHcBzgkGBy7BUwUW1vRcrAYydpx+RK4AhrNVeAwgCVGFFIiW9ralgPrkgBFKQwuBBJSxBNEAJpBNuBNMLd3yYgAfNLMMTX97AC28+wocwPt32J17AIuoFdEs8BSFRpmHwl2NYkuUGSqK8hBup8hnuhJtAeHBp0uFJpHmEF6HmA3zINr9T/Smz8Y0JP8Mn8jRTmOKHYIFN/IfA87sOjKoKqr+hBSFL8qHYmXOjoy9ZrglM6Jszpe8KZX7YX7ej8fBwnc+ex8P5SrL5TmJzbqDt9Byv72Zk9FgR0vIBmMQLys5YRjCnuKVImwUSFlCfaHeACsZUo5SAqpKbd31qw5pHZGeoE1qtNi0pPVN9DV23rRHh2U7OFTa36uLNjSW3NeHXX/I0U5jih2CBTfyHwPO7DowqexhakM1lkiVpeSl25tzo6AsHuO7zNSb0zZnSd4UyP+yv29F4yJZe57PnUaAz3UNfdB85YHOST6Ht9Bxv7l20zzxWhLRqFXySBGWfMrDjXhVainTEUMKtVOSmZLRVoIIxidIoJZBC87l598A2ihxFM1TtIwnbRu94UpT1l3gNXVsz9ii2IWeUPhGF3Gom1KzW5P5JXVlnDQbEePZgRIa5BAA=') format('woff2'), url(../fonts/style-font-awesome-v4.b31b.woff) format('woff');
+}
+.fa, .footer__social-fb::before {
+	display: inline-block;
+	/* font-family: FontAwesome; */
+	font-size: inherit;
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'FontAwesome b31b69';
+}
+@font-face {
+	font-family: 'Material Icons 9e612d';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMkAAoAAAAAB1gAAALaAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgloKgwCCSgE2AiQDDgsOAAQgBYUyByAbXQYRFZSFZD8P7GY0Dwb6B5H/yCYc+hCtFjz/+VfdV1VDacmPNSKAv1cRhJOP4rXinpNP3AGgbkt1ofx8A0XfTPJgMWS1Ldc0yl4/NixB7A3t8h32IBpqQf9zTb1Y6Cbw2QcYmR7dOPDyWTXdG0WJzAekG3Q3KElXF2AUcp4gkGmyBpgYbBxN4ygogjQmY4kFDKsO+uf6vysAbwABRuZSAWhHllltsdDRvkwMrUA4oSjUJJkn/J7/eyCAhnybmvIiZU/KrpSaKf9AJBiTewXrI4FoYBNwEeDGotAXzQqMxoRiYbKrigiBTM+pI5SD3hn+w+de+e59Tf3h9R8c8A0d+u77dvCr9/3Q2qdy6LP3kYhDT32PDyaWPiKOqLAknN+NCW64hLt2OD5pYYIdYTkRErES0Qi3RXC5M9oVcfZJe3vsmoY1vFh9p3pchFs0wy2MvDzSaFuei6tf7d1r76A3piGzIG5CXEF53OV8OOvtFS8vojzPSz1fbvaPWd/K/6u14Wnv1yFEqPfphoMOQ0OW1Xuh/ELvyLdey0rWsnWoya6wm6ZMufk67K+cPJhjvk4AUR+P9E5/ujSmczQ0TAHw+f/d1wDfi+N7iAP5Zmngo/IGCD69KY6K6gLNDSAqxxJtdLIFCCYf3UeDCGqvI5oXE8hqNxUJQhK1CShCGA+aMqaBIYltEEQU3vlgkriIRkwYsIxnAIRyiQRFtDSDZo6MA0O5XIAg0mVYFFz1gd+Ysf78MeQuUrBhu4tiRllvWKp0q4XpvwyJ+HC1w4UYrFTdLWn+lXoH5FWO3a2cH4WA5IFEt4DEMNkcrfsIm09EDjeiBwk5RLZM/QXT5s8fQ+4iBRu2uyhmlPWGpUp3iCQzxJCID1c7XAXL4M6h1d0YOkNX6g1bJq9y7M2SClwh2JLIOR1ZwZTsRtMwyHYmFeybkJxIlJzdYCEuKSIsquaxZsvWef/CkMARmeJg') format('woff2'), url(../fonts/style-material-design.9e61.woff) format('woff');
+}
+.material-icons, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before {
+	/* font-family: 'Material Icons'; */
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+	font-family: 'Material Icons 9e612d';
+}
+/* Syntax @icon: 'prefix-name'; */
+.header__home::before{
+	content: '\E88A';
+}
+/* Syntax @icon: "prefix-name"; */
+.header__swap::before{
+	content: '\E8D5';
+}
+
+.header__swap:hover::before{
+	content: '\E8D6';
+}
+
+/* Syntax @icon: prefix-name; */
+.header__account::before{
+	content: '\E853';
+}
+
+/* Syntax @icon prefix-name; */
+.header__help::before{
+	content: '\E887';
+}
+/* another icon set , prefix fa- */
+.footer__social-fb::before{
+	content: '\F09A';
+}
+
+.bad-name::before{
+	/* @icon: bad-name */
+}

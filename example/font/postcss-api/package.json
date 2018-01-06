@@ -1,0 +1,13 @@
+{
+  "name": "postcss-icon-example-postcss-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js",
+    "server": "static ./public"
+  },
+  "devDependencies": {
+    "postcss": "^6.0.0"
+  }
+}

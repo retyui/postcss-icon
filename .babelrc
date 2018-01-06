@@ -10,6 +10,10 @@
 						}
 					}
 				]
+			],
+			"plugins": [
+				"transform-object-rest-spread",
+				"add-module-exports"
 			]
 		},
 		"old": {
@@ -22,11 +26,11 @@
 						}
 					}
 				]
+			],
+			"plugins": [
+				"transform-object-rest-spread",
+				"add-module-exports"
 			]
 		}
-	},
-	"plugins": [
-		"transform-object-rest-spread",
-		"add-module-exports"
-	]
+	}
 }
