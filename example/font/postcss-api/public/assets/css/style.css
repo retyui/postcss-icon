@@ -1,8 +1,27 @@
 @font-face {
+	font-family: 'FontAwesome b31b69';
+	font-style: normal;
+	font-weight: 400;
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAANMAAoAAAAACAwAAAMCAAQBywAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKdHkBNgIkAwgLBgAEIAWJDAcvG1cHEYV8kP1MyPCUeTqV4J5G7hDLdY36VZ4Jnv/fH/0+956RHMdtKrE6zI8MVUcpmek3Mf23OdfkGxmhnsgBkE23tOP8pXkKzQDwH46ZLgnfgmyo0X+RQREJViDj2bCStqOjwxM780M841uGd1B7deMN1F6TfbiAbmsRsBquZ4ZANrFE/KnonxgcouKbfdAVJwhwRQBPTlN8TmddXTTsKcHG70SjxAOKIvDNcXy7n+vhDyiuWB8xAChggRggh9Yp6h8Q1ZBGnynv8Sm/iSnjufkUfJo81dvF03rJwguvrQ991wKX+GtuLvtw5SiuUPz7V+VQQ/Gi6nJKatr/v82/Trrz+sKDu6cOBgAIoHIn2cQOdvqV/Hb3cgPgadG9QoDnaUW36XTm7VVXAPcJegUuw0aFTirtVbEewNh5+hHFAhhCWp00gCBABVYgXFLb6vLmUwxCIHkpDG5UwhJAFZRAmpku3C644sUM3KhmHe548woeePIRXoTw9bkvsaJYRD2ADkmkICTLPAy+chKWRDmvVjT3qdqF5v6DK6EmGm4cN4Vxd8INKTwINp/gRaYl25cSmzmZ8DP8ROJihSl+CBZYRn9o1hvdKozyHKp/Bw9CnuRDUXXOpY6+5LkgMK2G6Q7O5N45yvywv25H4+HhOp89j4fzlWj/ncQnXEK72qvW++9EB485IS0ehGGdoOzMxATzCnsKtZnHsoBqq70AKhhRgZIBqkpi3vXZJWsSkp+lSmi52rGs3Fj1NazV2moRXl5NuMJUy7v45tJTLZjw6y+JixWm+CFYYBn9oVlvdKswyu1JaEE+l0+epOW9qDrnUkdf2MNFn19nWg3THZzJvXOU+WF/3Y7GQ7b6Op89jwKd6SH7o/sMPD4h+ym0q71qfQ0D9JF/zAlp2WrYNgPKPsVg3z0r9xTqiD7LrWTkOjvaNlDBiERhlAxIodXEvHtglpIchTOU7ScJ20Pve2IU95d6DWu2YuxpbEPVUUZE5KvlM6Fytbra/zSQddNgQEzFYkiGOQMAAA==') format('woff2'), url(../fonts/style-font-awesome-v4.b31b.woff) format('woff');
+}
+.fa, .footer__social-fb::before {
+	display: inline-block;
+	/* font-family: FontAwesome; */
+	font-size: inherit;
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'FontAwesome b31b69';
+}
+@font-face {
 	font-family: 'Material Icons 9e612d';
 	font-style: normal;
 	font-weight: 400;
-	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMkAAoAAAAAB1gAAALaAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgloKgwCCSgE2AiQDDgsOAAQgBYUyByAbXQYRFZSFZD8P7GY0Dwb6B5H/yCYc+hCtFjz/+VfdV1VDacmPNSKAv1cRhJOP4rXinpNP3AGgbkt1ofx8A0XfTPJgMWS1Ldc0yl4/NixB7A3t8h32IBpqQf9zTb1Y6Cbw2QcYmR7dOPDyWTXdG0WJzAekG3Q3KElXF2AUcp4gkGmyBpgYbBxN4ygogjQmY4kFDKsO+uf6vysAbwABRuZSAWhHllltsdDRvkwMrUA4oSjUJJkn/J7/eyCAhnybmvIiZU/KrpSaKf9AJBiTewXrI4FoYBNwEeDGotAXzQqMxoRiYbKrigiBTM+pI5SD3hn+w+de+e59Tf3h9R8c8A0d+u77dvCr9/3Q2qdy6LP3kYhDT32PDyaWPiKOqLAknN+NCW64hLt2OD5pYYIdYTkRErES0Qi3RXC5M9oVcfZJe3vsmoY1vFh9p3pchFs0wy2MvDzSaFuei6tf7d1r76A3piGzIG5CXEF53OV8OOvtFS8vojzPSz1fbvaPWd/K/6u14Wnv1yFEqPfphoMOQ0OW1Xuh/ELvyLdey0rWsnWoya6wm6ZMufk67K+cPJhjvk4AUR+P9E5/ujSmczQ0TAHw+f/d1wDfi+N7iAP5Zmngo/IGCD69KY6K6gLNDSAqxxJtdLIFCCYf3UeDCGqvI5oXE8hqNxUJQhK1CShCGA+aMqaBIYltEEQU3vlgkriIRkwYsIxnAIRyiQRFtDSDZo6MA0O5XIAg0mVYFFz1gd+Ysf78MeQuUrBhu4tiRllvWKp0q4XpvwyJ+HC1w4UYrFTdLWn+lXoH5FWO3a2cH4WA5IFEt4DEMNkcrfsIm09EDjeiBwk5RLZM/QXT5s8fQ+4iBRu2uyhmlPWGpUp3iCQzxJCID1c7XAXL4M6h1d0YOkNX6g1bJq9y7M2SClwh2JLIOR1ZwZTsRtMwyHYmFeybkJxIlJzdYCEuKSIsquaxZsvWef/CkMARmeJg') format('woff2'), url(../fonts/style-material-design.9e61.woff) format('woff');
+	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMkAAoAAAAAB1gAAALaAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgloKgwCCSgE2AiQDDgsOAAQgBYUyByAbXQYRFZSFZD8P7GY0Dwb6B5H/yCYc+hCtFjz/b1fd938NqRULa0QAq1cRhJPDiHtOPnEHgLot1YXy8w0UfTPJg8WQ1bZc0yh7/diwBLE3tMt32INoqAX9zzX1YqGbwGcfYGR6dOPAy2fVdG8UJTIfkG7Q3aAkXV2AoZCD+IGMkHnA4GDjQBLbQeGnMRlLJGCwarN3vPe7AvAGEGBkJiWAdmSp1RYTHe1LxaARCCYQhZokc5fX9X73+dCQb1MTbiWsS1iTUDHlH4j4Y3KvYH0oEA4sAQ4D3LAo9EWzAqNhBGJhvKsKCYBMz6lDlI3eGfzD4xz77n5N/OHe3XzP82DLd8+3zV/d71vmX5ctn92PhGy57rm6ObbwCnFEiSnB/G5McIIl2LGC8UmTE6wQ0w6RkNmIRrAlgsvt0a6IsnZbKyPn1czj1txz5b0hTt4oJzf0aH+tZXkOz72zfr29g86ImtScqEFROcVRR7PhrLfH3KyQ4iw38WCx2d+9sJX/V3PR9c6vDxChzuuLNts8eGCanYeKD3X2f+s0zWQtyx/UWSVW3bBhp1+H/aVDB3PM1wkg6uO29uDT0yNaBwKDFACf/59/DfC9oOYZUSDfLA18VN4Awac3RVFSXaC5AUTlWKLFTrYA/mSj+2gQQe10hHNrAlnlpiJBiKMyAUUAfaApYgQYxLEC/AjDPe9PHIfRiBEEzOAGAKFYQkERLvWgGSe9YFAsh8CPZHko8q/6wG9Mjz9/DLmLFGzY7qKYUdYblirdamH6L0MiPlztcCEGK1V3S5p/pd4BeZVjdyvnRyEgeSDRLSAxTDZH6z7C5hORw43oQUIOkS1Tf8G0+fPHkLtIwYbtLooZZb1hqdIdIskMMSTiw9UOV8EyuHNodTeGztCVesOWyasce7OkAlcItiRyTkdWMCW70TQMsp1JBfsmJCcSJWc3WIhLigiLqnms2bJ13r8wxLdNptgf') format('woff2'), url(../fonts/style-material-design.9e61.woff) format('woff');
 }
 .material-icons, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before {
 	/* font-family: 'Material Icons'; */
@@ -28,25 +47,6 @@
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 	font-family: 'Material Icons 9e612d';
-}
-@font-face {
-	font-family: 'FontAwesome b31b69';
-	font-style: normal;
-	font-weight: 400;
-	src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAANEAAoAAAAACAAAAAL7AAQBywAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKdHkBNgIkAwgLBgAEIAWJAAcvG0sHEYXMkH1xYJ40/VgxLj2oUB90OZkEn+QG9Z6DiNay6pkOEUtiC6RyLpGAbIlUhCcJ/+9IgiZ0vwHwSmenkWGK1jcRW/mEiNHjqeXk7nNrtupq8/+5d/oH8W2QhTr2a2/rRGNMsAUSZ+Ga1I+iMLGMQ824ZXgHtVc3BKD2QfZxA93WEmA1XMwMgWxiyQRS1D8xOETVd+yt7ji4I4CnpikxZ7KuKRYOlGFjIbEoiYCiCHzHcXx3QNrDDyjuWI8YABSwQByQR5sU9QdENazTb8p3fCpgYsp4b74Gvy5v9XXztj6y8M5n633fg1vig4fbPu6c4w6lf357nnSULppu09Iz/v8r/udkOvdLAYAAKi+uU3UFlP3x9PEA4HXJq2KAt2m/D3A58/beHcBzgkGBy7BUwUW1vRcrAYydpx+RK4AhrNVeAwgCVGFFIiW9ralgPrkgBFKQwuBBJSxBNEAJpBNuBNMLd3yYgAfNLMMTX97AC28+wocwPt32J17AIuoFdEs8BSFRpmHwl2NYkuUGSqK8hBup8hnuhJtAeHBp0uFJpHmEF6HmA3zINr9T/Smz8Y0JP8Mn8jRTmOKHYIFN/IfA87sOjKoKqr+hBSFL8qHYmXOjoy9ZrglM6Jszpe8KZX7YX7ej8fBwnc+ex8P5SrL5TmJzbqDt9Byv72Zk9FgR0vIBmMQLys5YRjCnuKVImwUSFlCfaHeACsZUo5SAqpKbd31qw5pHZGeoE1qtNi0pPVN9DV23rRHh2U7OFTa36uLNjSW3NeHXX/I0U5jih2CBTfyHwPO7DowqexhakM1lkiVpeSl25tzo6AsHuO7zNSb0zZnSd4UyP+yv29F4yJZe57PnUaAz3UNfdB85YHOST6Ht9Bxv7l20zzxWhLRqFXySBGWfMrDjXhVainTEUMKtVOSmZLRVoIIxidIoJZBC87l598A2ihxFM1TtIwnbRu94UpT1l3gNXVsz9ii2IWeUPhGF3Gom1KzW5P5JXVlnDQbEePZgRIa5BAA=') format('woff2'), url(../fonts/style-font-awesome-v4.b31b.woff) format('woff');
-}
-.fa, .footer__social-fb::before {
-	display: inline-block;
-	/* font-family: FontAwesome; */
-	font-size: inherit;
-	font-stretch: normal;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family: 'FontAwesome b31b69';
 }
 /* Syntax @icon: 'prefix-name'; */
 .header__home::before{

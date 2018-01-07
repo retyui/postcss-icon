@@ -7,18 +7,21 @@ const baseConfigFontIconSets = {
 	}
 };
 
-module.exports = (ctx) => ({
-	plugins: {
-		"postcss-icon": {
-			"postcss-icon.material-design": {
-				prefix: "md-",
-				...baseConfigFontIconSets
-			},
-			"postcss-icon.font-awesome-v4": {
-				prefix: "fa-",
-				...baseConfigFontIconSets
-			},
-			"postcss-icon.font-awesome-v5": false // this icon set not used
+module.exports = ({file, env}) => {
+	// console.log({file, env});
+	return {
+		plugins: {
+			"postcss-icon": {
+				"postcss-icon.material-design": {
+					prefix: "md-",
+					...baseConfigFontIconSets
+				},
+				"postcss-icon.font-awesome-v4": {
+					prefix: "fa-",
+					...baseConfigFontIconSets
+				},
+				"postcss-icon.font-awesome-v5": false // this icon set not used
+			}
 		}
-	}
-});
+	};
+};

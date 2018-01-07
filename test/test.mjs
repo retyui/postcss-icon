@@ -24,7 +24,7 @@ function test({ input, output, done, plugins, clearCss = true }) {
 
 			expect(css).to.eql(output);
 			done();
-		});
+		}).catch(e => console.log(e));
 }
 
 const exampleData = [
@@ -341,20 +341,21 @@ describe("postcss-icon", () => {
 		});
 	});
 
-	// describe("Font", () => {
-	// 	it("inline", done => {
-	// 		test({
-	// 			input: ".icon.mail { @icon: md-home; }",
-	// 			output: ".icon.mail { /* @icon: mail */ }",
-	// 			plugins: postcssIcon({
-	// 				md: {
-	// 					prefix: 'md-',
-	// 					...require("../../postcss-icon.material-design"),
-	// 					output: { inline: true, formats: "woff2" }
-	// 				}
-	// 			}),
-	// 			done
-	// 		});
-	// 	});
-	// })
+	describe("Font", () => {
+		it("inline", done => {
+			test({
+				input: ".icon.mail { @icon: md-home; }",
+				output: "@font-face{font-family:\'MaterialIcons49901f\';font-style:normal;font-weight:400;src:url(\'data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAJgAAoAAAAABfwAAAIWAAEC0AAAAAAAAAAAAAAAAAAAAAAAAAAABmAAgkIKTFsBNgIkAwYLBgAEIAWFMgcgG04FEQUEyb4q4MnwUQm8tA1zLhP5gVU9lu7j1RJqQjsizstBxY/9Zt87xKSJe/IISbtU1UYJYiWSVDKhkH8AJLAlg+qmshUG0jZAAIciEzcId7O8GP31t3d0cNMie/1lCWK/oV1+DxNEQy24/7mc3m2iD3JKB3xHe9W2tbG0QO4lEFi0h0WJ5AWCDdMLvvIgPIE5dBIEGtYM0Jes/E9jAxxBHs2uWMDwV/72TJsDCAkE6sylCPBOyewuNeNRlWnkAoYV//YCgeBa3uAPVDD6GQeAAR5IANKgYkP9MouI8BFuwmfDJ8PlgvFw4ua48Z3xpdisSp7HFs7anzcvtZ8trEwAgAC5+9vP+n8qpvk/NOyIxx9/uwNe87wfB3oRCKXPEanhUEjR8I+XAdTJs4QjYqyFBN2eieZyoVJ+mU4QSZQX4AihBzwFDIORxCIEEcXe8WCSOMUjCwOmOQcgChU4olULnhF1CzZMDkGkixDc9Ybvc4v7nypXk6mOGyGGBeFz4JjR67646KGQL87xcSOVjWKGw81tLSp/kMc49/B2X0oBuRIb0xo2ZnHZY/xYYfWBLA0nVUqQJ8q69Qd8trj/qXI1meq4EWJYED4Hjhm9JVJV7kMhX5zj425EypNbY4azoC1TonLZPHmMcx+WOiml4EqzqcTGltxgaRa7aVHjEtKBo9KBiHTkZIkNsFHr1X/yBQisW4sOAAA=\')format(\'woff2\');}.material-icons,.icon.mail{/*font-family:\'MaterialIcons\';*/font-weight:normal;font-style:normal;font-size:24px;/*Preferrediconsize*/display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;/*SupportforallWebKitbrowsers.*/-webkit-font-smoothing:antialiased;/*SupportforSafariandChrome.*/text-rendering:optimizeLegibility;/*SupportforFirefox.*/-moz-osx-font-smoothing:grayscale;/*SupportforIE.*/font-feature-settings:\'liga\';font-family:\'MaterialIcons49901f\';}.icon.mail{}",
+				plugins: postcssIcon({
+					md: {
+						prefix: 'md-',
+						...require("../../postcss-icon.material-design"),
+						output: { inline: true, formats: "woff2" },
+						cache: true
+					}
+				}),
+				done
+			});
+		});
+	})
 });

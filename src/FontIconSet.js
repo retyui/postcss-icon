@@ -77,8 +77,7 @@ export class FontIconSet extends IconSet {
 	async applyIcons({ root, result }) {
 		const { from: fromPath, to: toPath } = result.opts;
 		const baseNode = this._css.nodes[0].clone();
-		const outputPath =
-			this._output.path || pathParse(toPath || fromPath).dir;
+		const outputPath = this._output.path || pathParse(toPath || fromPath || process.cwd()).dir;
 
 		for (const nodesSet of this._linker.rootMap.values()) {
 			for (const [iconName, nodes] of nodesSet) {
