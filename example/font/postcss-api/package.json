@@ -8,6 +8,9 @@
     "server": "static ./public"
   },
   "devDependencies": {
-    "postcss": "^6.0.0"
+    "postcss": "^6.0.0",
+    "postcss-icon": "^7.0.0",
+    "postcss-icon.font-awesome-v4": "^0.0.1",
+    "postcss-icon.material-design": "^0.0.2"
   }
 }

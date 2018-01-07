@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts":{
+  "scripts": {
     "build": "npx gulp",
     "server": "static ./public"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-clean": "^0.3.2",
-    "gulp-postcss": "^7.0.1"
+    "gulp-postcss": "^7.0.1",
+    "postcss-icon": "^7.0.0",
+    "postcss-icon.font-awesome-v4": "^0.0.1",
+    "postcss-icon.material-design": "^0.0.2"
   }
 }

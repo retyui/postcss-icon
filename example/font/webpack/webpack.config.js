@@ -1,15 +1,6 @@
 const { resolve } = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const baseConfigFontIconSets = {
-	cache: true,
-	output: {
-		inline: false, // use url-loader
-		formats: ["woff2", "woff", "ttf", "svg", "eot"],
-		filename: "../icon-fonts/[css-name]-[set-name].[hash:4].[ext]"
-	}
-};
-
 module.exports = {
 	module: {
 		rules: [
@@ -44,24 +35,7 @@ module.exports = {
 							loader: "css-loader",
 							options: { importLoaders: 1 }
 						},
-						{
-							loader: "postcss-loader",
-							options: {
-								plugins: [
-									require("../../../.")({ // analog require('postcss-icon')
-										"postcss-icon.material-design": {
-											prefix: "md-",
-											...baseConfigFontIconSets
-										},
-										"postcss-icon.font-awesome-v4": {
-											prefix: "fa-",
-											...baseConfigFontIconSets
-										},
-										"postcss-icon.font-awesome-v5": false // this icon set not used
-									})
-								]
-							}
-						}
+						"postcss-loader" // options in ./postcss.config.js
 					]
 				})
 			}
