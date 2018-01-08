@@ -48,8 +48,8 @@
 	},
 	"keywords": [
 		"css",
-		"css-icon"
+		"css-icon",
 		"postcss",
-		"postcss-plugin",
+		"postcss-plugin"
 	]
 }
