@@ -2,7 +2,7 @@
 	font-family: 'FontAwesome b31b69';
 	font-style: normal;
 	font-weight: 400;
-	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1mb250LWF3ZXNvbWUtdjQuYjMxYi53b2ZmMiI7) format('woff2'), url(../fonts/style-font-awesome-v4.b31b.woff) format('woff'), url(../fonts/style-font-awesome-v4.b31b.ttf) format('truetype'), url(../fonts/style-font-awesome-v4.b31b.svg) format('svg'), url(../fonts/style-font-awesome-v4.b31b.eot) format('embedded-opentype');
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1mb250LWF3ZXNvbWUtdjQuYjMxYi53b2ZmMiI7) format('woff2');
 }
 .fa, .footer__social-fb::before {
 	display: inline-block;
@@ -21,7 +21,7 @@
 	font-family: 'Material Icons 9e612d';
 	font-style: normal;
 	font-weight: 400;
-	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1tYXRlcmlhbC1kZXNpZ24uOWU2MS53b2ZmMiI7) format('woff2'), url(../fonts/style-material-design.9e61.woff) format('woff'), url(../fonts/style-material-design.9e61.ttf) format('truetype'), url(../fonts/style-material-design.9e61.svg) format('svg'), url(../fonts/style-material-design.9e61.eot) format('embedded-opentype');
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9zdHlsZS1tYXRlcmlhbC1kZXNpZ24uOWU2MS53b2ZmMiI7) format('woff2');
 }
 .material-icons, .header__home::before, .header__swap::before, .header__swap:hover::before, .header__account::before, .header__help::before {
 	/* font-family: 'Material Icons'; */
@@ -85,7 +85,7 @@
 	font-family: 'Material Icons 49901f';
 	font-style: normal;
 	font-weight: 400;
-	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9hZG1pbi1zdHlsZS1tYXRlcmlhbC1kZXNpZ24uNDk5MC53b2ZmMiI7) format('woff2'), url(../fonts/admin-style-material-design.4990.woff) format('woff'), url(../fonts/admin-style-material-design.4990.ttf) format('truetype'), url(../fonts/admin-style-material-design.4990.svg) format('svg'), url(../fonts/admin-style-material-design.4990.eot) format('embedded-opentype');
+	src: url(data:font/woff2;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICIuLi9mb250cy9hZG1pbi1zdHlsZS1tYXRlcmlhbC1kZXNpZ24uNDk5MC53b2ZmMiI7) format('woff2');
 }
 
 .material-icons, .header__home::before {

@@ -2,17 +2,21 @@
 	"name": "postcss-icon",
 	"description": "PostCSS plugin which allows you to quickly add styles to css icons",
 	"version": "7.0.0",
-	"main": "postcss-icon.js",
 	"repository": "https://github.com/retyui/postcss-icon",
 	"author": "retyui <vamnemne@gmail.com>",
 	"license": "MIT",
+	"main": "postcss-icon.js",
+	"files": [
+		"lib",
+		"lib-old"
+	],
 	"scripts": {
-		"clean": "rimraf ./test/test.js ./lib ./lib-old",
-		"lint": "eslint ./**/*.js --fix --quiet",
-		"precompile": "npm-run-all clean lint",
-		"compile": "npm-run-all --parallel babel:* testcompile",
 		"babel:modern": "cross-env BABEL_ENV=modern babel src --out-dir lib",
 		"babel:old": "cross-env BABEL_ENV=old babel src --out-dir lib-old",
+		"clean": "rimraf ./test/test.js ./lib ./lib-old",
+		"compile": "npm-run-all --parallel babel:* testcompile",
+		"lint": "eslint ./**/*.js --fix --quiet",
+		"precompile": "npm-run-all clean lint",
 		"pretest": "npm run compile",
 		"test": "mocha ./test/test.js",
 		"testcompile": "cross-env BABEL_ENV=old babel test/test.mjs --out-file test/test.js"
@@ -43,9 +47,9 @@
 		"rimraf": "^2.6.2"
 	},
 	"keywords": [
-		"postcss",
 		"css",
-		"postcss-plugin",
 		"css-icon"
+		"postcss",
+		"postcss-plugin",
 	]
 }

@@ -2,8 +2,7 @@ import { comment, plugin } from "postcss";
 import { LazyIconSet } from "./LazyIconSet.js";
 import { NAME } from "./config";
 
-
-export default plugin(NAME, (options) => {
+export default plugin(NAME, options => {
 	if (!options) {
 		console.log(
 			`[${NAME}]`,
@@ -62,7 +61,6 @@ function walkAtRuleIcon(root, func) {
 function clearValue(val) {
 	return val.replace(/['"]/g, "");
 }
-
 
 function closestRoot({ parent }) {
 	if (parent === undefined) {

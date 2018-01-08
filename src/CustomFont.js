@@ -1,6 +1,14 @@
 import fs from "fs";
 import { tmpdir } from "os";
 import mkdirp from "mkdirp-promise";
+import { isFunction, isString, isNumber, generateHash } from "./helps.js";
+import { NAME } from "./config";
+import {
+	isAbsolute,
+	join as pathJoin,
+	parse as pathParse,
+	relative as pathRelative
+} from "path";
 
 let { promisify } = require("util");
 if (!promisify) {
@@ -10,16 +18,6 @@ const writeFileAsync = promisify(fs.writeFile);
 const readFileAsync = promisify(fs.readFile);
 const accessAsycn = promisify(fs.access);
 
-import {
-	isAbsolute,
-	join as pathJoin,
-	parse as pathParse,
-	relative as pathRelative
-} from "path";
-
-import { isFunction, isString, isNumber, generateHash } from "./helps.js";
-import { NAME } from "./config";
-
 const getFormatName = (formats => {
 	return function getFormatName(format) {
 		return formats[format] ? formats[format] : format;
@@ -28,6 +26,11 @@ const getFormatName = (formats => {
 	eot: "embedded-opentype",
 	ttf: "truetype"
 });
+
+const REGEXP_SET_NAME = /\[set-name\]/g;
+const REGEXP_CSS_NAME = /\[css-name\]/g;
+const REGEXP_HASH = /\[hash(:\d)?\]/g;
+const REGEXP_EXT = /\[ext\]/g;
 
 export class CustomFont {
 	constructor(name, buffer, cache) {
@@ -133,9 +136,20 @@ export class CustomFont {
 
 	async _getFromCache(type) {
 		const cacheFile = this.getTmpName(type);
-		try {
-			await accessAsycn(cacheFile, fs.constants.F_OK | fs.constants.R_OK);
+		if (
+			await this._checkAccess(
+				cacheFile,
+				fs.constants.F_OK | fs.constants.R_OK
+			)
+		) {
 			return await readFileAsync(cacheFile);
+		}
+		return false;
+	}
+
+	async _checkAccess(path, flag) {
+		try {
+			return undefined === (await accessAsycn(path, flag));
 		} catch (e) {
 			return false;
 		}
@@ -163,7 +177,7 @@ export class CustomFont {
 			)}`;
 		}
 
-		return this._font.toBase64({ type }); // support: woff ; bad support: ttf,eot,svg
+		return this._font.toBase64({ type });
 	}
 
 	getHash(len) {
@@ -172,33 +186,50 @@ export class CustomFont {
 		}
 		return this._hash;
 	}
-
-	_getFileName(data) {
-		const { ext, fromPath } = data;
-		const { name: cssFileName } = pathParse(fromPath);
-
-		let { filename } = data;
+	_prepareFileName({ filename, cssFile, ext }) {
 		if (isFunction(filename)) {
 			filename = filename({
-				cssFile: data.fromPath,
 				setName: this._name,
+				cssFile,
 				ext
 			});
 		}
+		return filename;
+	}
+
+	_getFileName(data) {
+		const cssFileName = pathParse(data.fromPath).name;
+
+		const filename = this._prepareFileName({
+			filename: data.filename,
+			cssFile: data.fromPath,
+			ext: data.ext
+		});
+		const isFilenameHasHash = this._filenameHasHash(filename);
 
 		if (isString(filename)) {
-			return filename
-				.replace(/\[set-name\]/g, this._name)
-				.replace(/\[css-name\]/g, cssFileName)
-				.replace(/\[hash(:\d)?\]/g, (s, count) => {
-					const hashLen = count ? Number(count.replace(":", "")) : 4;
-					return this.getHash(hashLen);
-				})
-				.replace(/\[ext\]/g, ext);
+			return [
+				filename
+					.replace(REGEXP_SET_NAME, this._name)
+					.replace(REGEXP_CSS_NAME, cssFileName)
+					.replace(REGEXP_HASH, (s, count) => {
+						const hashLen = count
+							? Number(count.replace(":", ""))
+							: 4;
+						return this.getHash(hashLen);
+					})
+					.replace(REGEXP_EXT, data.ext),
+				isFilenameHasHash
+			];
 		}
 
-		throw new Error("filename must be a Strung");
+		throw new Error("Output filename must be a Strung!");
 	}
+
+	_filenameHasHash(filename) {
+		return REGEXP_HASH.test(filename);
+	}
+
 	async _fileFontSrc(data) {
 		const { formats, fromPath, toPath, outputPath, output } = data;
 		const { filename, url } = output;
@@ -206,13 +237,14 @@ export class CustomFont {
 			formats.map(async format => {
 				const cssDir = pathParse(toPath || fromPath).dir;
 				const cssFilePath = outputPath ? outputPath : cssDir;
-				const _fontFileName = this._getFileName({
+
+				const [fontFilename, isFilenameHasHash] = this._getFileName({
 					ext: format,
 					fromPath,
 					filename
 				});
 
-				let absoluteFontFileName = _fontFileName;
+				let absoluteFontFileName = fontFilename;
 				if (!isAbsolute(absoluteFontFileName)) {
 					absoluteFontFileName = pathJoin(
 						cssFilePath,
@@ -226,16 +258,24 @@ export class CustomFont {
 					relativeUrl = url({
 						setName: this._name,
 						cssFile: fromPath,
-						fontName: _fontFileName,
+						fontName: fontFilename,
 						hash: this.getHash()
 					});
 				}
 
 				await mkdirp(pathParse(absoluteFontFileName).dir);
-				await writeFileAsync(
-					absoluteFontFileName,
-					await await this.toBuffer(format)
-				);
+
+				const isCreateNewFile = isFilenameHasHash
+					? !await this._checkAccess(
+							absoluteFontFileName,
+							fs.constants.F_OK | fs.constants.R_OK
+						)
+					: true;
+
+				if (isCreateNewFile) {
+					const fontData = await this.toBuffer(format);
+					await writeFileAsync(absoluteFontFileName, fontData);
+				}
 
 				return `url(${relativeUrl}) ${CustomFont.getFormat(format)}`;
 			})
