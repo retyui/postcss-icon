@@ -1,7 +1,7 @@
 {
 	"name": "postcss-icon",
 	"description": "PostCSS plugin which allows you to quickly add styles to css icons",
-	"version": "7.0.0",
+	"version": "7.0.0-alpha.3",
 	"repository": "https://github.com/retyui/postcss-icon",
 	"author": "retyui <vamnemne@gmail.com>",
 	"license": "MIT",
@@ -17,6 +17,7 @@
 		"compile": "npm-run-all --parallel babel:* testcompile",
 		"lint": "eslint ./**/*.js --fix --quiet",
 		"precompile": "npm-run-all clean lint",
+		"prepare": "npm-run-all compile",
 		"pretest": "npm run compile",
 		"test": "mocha ./test/test.js",
 		"testcompile": "cross-env BABEL_ENV=old babel test/test.mjs --out-file test/test.js"

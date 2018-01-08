@@ -9,7 +9,38 @@ const counter = {
 		return ++this[key];
 	}
 };
-const pwd = process.cwd();
+class FsWathc {
+	constructor(w) {
+		this.w = w;
+		this.isStarted = false;
+		this.wather = {};
+	}
+	startWathc() {
+		if (!this.isStarted) {
+			this.isStarted = true;
+			this.wather = require("fs").watch(
+				this.w,
+				{ encoding: "buffer" },
+				(eventType, filename) => {
+					console.log(
+						`fs.watch: ${eventType} ${
+							filename
+								? filename.toString("utf8").replace(cwd, "")
+								: ""
+						}`
+					);
+				}
+			);
+		}
+	}
+	close() {
+		if (this.wather && this.wather.close) {
+			this.wather.close();
+			this.isStarted = false;
+		}
+	}
+}
+const cwd = process.cwd();
 module.exports = {
 	module: {
 		rules: [
@@ -25,7 +56,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(woff2?|ttf|svg|eot)$/,
+				test: /\.(woff|ttf|svg|eot)$/,
 				use: [
 					{
 						loader: "file-loader",
@@ -52,31 +83,35 @@ module.exports = {
 	},
 	plugins: [
 		{
-			apply() {
-				deleteSync(resolve(__dirname, "./src/icon-fonts/*"));
+			apply(compiler) {
+				deleteSync(
+					["./public/assets/fonts/*", "./src/icon-fonts/*"].map(e =>
+						resolve(__dirname, e)
+					)
+				);
+
+				compiler.plugin("invalid", (file, time) => {
+					console.log(
+						`on invalid ${("0" + counter.getN("invalid")).slice(
+							-2
+						)}: ${JSON.stringify({
+							file: file.replace(cwd, ""),
+							time
+						})}`
+					);
+				});
+
+				const tmpWather = new FsWathc("./src/icon-fonts/");
+				tmpWather.startWathc();
+				compiler.plugin("done", () => {
+					tmpWather.close();
+				});
 			}
 		},
 		new ExtractTextPlugin({
 			filename: "../css/style.css",
 			disable: false
-		}),
-		{
-			apply(compiler) {
-				compiler.plugin("compile", params => {
-					console.log(`on compile ${counter.getN("compile")}`);
-				});
-				compiler.plugin("invalid", (file, time) => {
-					console.log(
-						`on invalid ${counter.getN(
-							"invalid"
-						)} args : ${JSON.stringify({
-							file: file.replace(pwd, ""),
-							time
-						})}`
-					);
-				});
-			}
-		}
+		})
 	],
 	stats: "errors-only",
 	context: resolve(__dirname, "src"),

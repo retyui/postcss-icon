@@ -1,8 +1,8 @@
 const baseConfigFontIconSets = {
-	cache: true,
+	cache: false,
 	output: {
 		inline: false, // use url-loader
-		formats: ["woff2"/*, "woff", "ttf", "svg", "eot"*/],
+		formats: ["woff2", "woff"/*, "ttf", "svg", "eot"*/],
 		filename: "../icon-fonts/[css-name]-[set-name].[hash:4].[ext]"
 	}
 };
