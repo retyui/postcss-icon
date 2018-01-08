@@ -53,7 +53,25 @@ module.exports = {
 	plugins: [
 		{
 			apply() {
-				deleteSync(resolve(__dirname, "./src/icon-fonts/*"));
+				deleteSync(
+					["./public/assets/fonts/*", "./src/icon-fonts/*"].map(e =>
+						resolve(__dirname, e)
+					)
+				);
+
+				require("fs").watch(
+					"./src/icon-fonts/",
+					{ encoding: "buffer" },
+					(eventType, filename) => {
+						console.log(
+							`fs.watch: ${eventType} ${
+								filename
+									? filename.toString("utf8").replace(pwd, "")
+									: ""
+							}`
+						);
+					}
+				);
 			}
 		},
 		new ExtractTextPlugin({
@@ -62,14 +80,11 @@ module.exports = {
 		}),
 		{
 			apply(compiler) {
-				compiler.plugin("compile", params => {
-					console.log(`on compile ${counter.getN("compile")}`);
-				});
 				compiler.plugin("invalid", (file, time) => {
 					console.log(
-						`on invalid ${counter.getN(
-							"invalid"
-						)} args : ${JSON.stringify({
+						`on invalid ${("0" + counter.getN("invalid")).slice(
+							-2
+						)}: ${JSON.stringify({
 							file: file.replace(pwd, ""),
 							time
 						})}`

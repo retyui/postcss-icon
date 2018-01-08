@@ -17,6 +17,7 @@
 		"compile": "npm-run-all --parallel babel:* testcompile",
 		"lint": "eslint ./**/*.js --fix --quiet",
 		"precompile": "npm-run-all clean lint",
+		"prepare": "npm-run-all clean lint",
 		"pretest": "npm run compile",
 		"test": "mocha ./test/test.js",
 		"testcompile": "cross-env BABEL_ENV=old babel test/test.mjs --out-file test/test.js"

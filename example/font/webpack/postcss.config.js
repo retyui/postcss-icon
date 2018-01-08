@@ -1,5 +1,5 @@
 const baseConfigFontIconSets = {
-	cache: true,
+	cache: false,
 	output: {
 		inline: false, // use url-loader
 		formats: ["woff2"/*, "woff", "ttf", "svg", "eot"*/],
