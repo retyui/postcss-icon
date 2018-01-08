@@ -277,7 +277,7 @@ export class CustomFont {
 					await writeFileAsync(absoluteFontFileName, fontData);
 				}
 
-				relativeUrl = relativeUrl.replace(/\\/g, '/'); // fix for windows
+				relativeUrl = relativeUrl.replace(/\\/g, "/"); // fix for windows
 
 				return `url(${relativeUrl}) ${CustomFont.getFormat(format)}`;
 			})
