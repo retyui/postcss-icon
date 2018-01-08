@@ -2,14 +2,14 @@ const { resolve } = require("path");
 const { sync: deleteSync } = require("del");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const counter = {
-	getN(key){
-		if(this[key] === undefined){
+	getN(key) {
+		if (this[key] === undefined) {
 			this[key] = 0;
 		}
 		return ++this[key];
 	}
-}
-const all = [];
+};
+const pwd = process.cwd();
 module.exports = {
 	module: {
 		rules: [
@@ -53,7 +53,7 @@ module.exports = {
 	plugins: [
 		{
 			apply() {
-				deleteSync(resolve(__dirname, './src/icon-fonts/*'));
+				deleteSync(resolve(__dirname, "./src/icon-fonts/*"));
 			}
 		},
 		new ExtractTextPlugin({
@@ -63,34 +63,18 @@ module.exports = {
 		{
 			apply(compiler) {
 				compiler.plugin("compile", params => {
-					console.log(`1) compile ${counter.getN(1)} Компилятор начинает компилировать ...`);
+					console.log(`on compile ${counter.getN("compile")}`);
 				});
-
-				// compiler.plugin("compilation", compilation => {
-				// 	console.log(`2) compilation ${counter.getN(2)} Компилятор запускает новую компиляцию ...`);
-
-				// 	compilation.plugin("optimize", () => {
-				// 		console.log(`3) optimize ${counter.getN(3)} Компиляция начинает оптимизировать файлы ...`);
-				// 	});
-				// });
-
-				// compiler.plugin("emit", (compilation, callback) => {
-				// 	console.log(`4) emit ${counter.getN(4)} Компиляция будет генерировать файлы ...`);
-				// 	callback();
-				// });
-
-				// compiler.plugin("watch-run", (...args) => {
-				// 	console.log(`5) watch-run ${counter.getN(5)} args : ${Object.keys(args)} type: ${args.map(e => typeof e)} \${}`)
-				// 	args[1]();
-				// })
-				// compiler.plugin("watch-close", (...args) => {
-				// 	console.log(`6) watch-close ${counter.getN(6)} args : ${Object.keys(args)} type: ${args.map(e => typeof e)} \${}`)
-				// })
-				compiler.plugin("invalid", (...args) => {
-					debugger;
-					console.log(`7) invalid ${counter.getN(7)} args : ${args}`)
-				})
-
+				compiler.plugin("invalid", (file, time) => {
+					console.log(
+						`on invalid ${counter.getN(
+							"invalid"
+						)} args : ${JSON.stringify({
+							file: file.replace(pwd, ""),
+							time
+						})}`
+					);
+				});
 			}
 		}
 	],
