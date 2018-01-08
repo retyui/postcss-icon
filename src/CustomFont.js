@@ -142,7 +142,7 @@ export class CustomFont {
 				fs.constants.F_OK | fs.constants.R_OK
 			)
 		) {
-			return await readFileAsync(cacheFile);
+			return readFileAsync(cacheFile);
 		}
 		return false;
 	}

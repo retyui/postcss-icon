@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx webpack -p",
     "dev": "npx webpack -w",
+    "postinstall":"mkdir -p ./node_modules/postcss-icon ; echo \"module.exports = require('../../../../../.');\" > ./node_modules/postcss-icon/index.js",
     "server": "static ./public"
   },
   "devDependencies": {
