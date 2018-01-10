@@ -1,5 +1,5 @@
 import { parse as pathParse } from "path";
-import { decl, parse as postcssParse } from "postcss/lib/postcss";
+import { decl, parse as postcssParse } from "postcss";
 
 import { NAME } from "./config";
 import { IconSet } from "./IconSet";

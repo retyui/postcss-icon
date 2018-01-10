@@ -1,5 +1,5 @@
 import { IconSet } from "./IconSet";
-import { parse } from "postcss/lib/postcss";
+import { parse } from "postcss";
 
 export class CssIconSet extends IconSet {
 	constructor({ name, styles, prefix = "" }) {
