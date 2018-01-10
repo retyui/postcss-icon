@@ -93,7 +93,7 @@ module.exports = {
 			}
 		}
 	],
-	stats: "errors-only",
+	// stats: "errors-only",
 	context: resolve(__dirname, "src"),
 	entry: {
 		app: ["./js/app.js"]
