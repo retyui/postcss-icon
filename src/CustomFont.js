@@ -1,7 +1,13 @@
 import fs from "fs";
 import { tmpdir } from "os";
 import mkdirp from "mkdirp-promise";
-import { isFunction, isString, isNumber, generateHash } from "./helps.js";
+import {
+	isFunction,
+	isString,
+	isNumber,
+	generateHash,
+	checkIsWebpackRun
+} from "./helps.js";
 import { NAME } from "./config";
 import {
 	isAbsolute,
@@ -31,6 +37,8 @@ const REGEXP_SET_NAME = /\[set-name\]/g;
 const REGEXP_CSS_NAME = /\[css-name\]/g;
 const REGEXP_HASH = /\[hash(:\d)?\]/g;
 const REGEXP_EXT = /\[ext\]/g;
+
+const isWebpackRun = checkIsWebpackRun(module);
 
 export class CustomFont {
 	constructor(name, buffer, cache) {
@@ -275,6 +283,21 @@ export class CustomFont {
 				if (isCreateNewFile) {
 					const fontData = await this.toBuffer(format);
 					await writeFileAsync(absoluteFontFileName, fontData);
+
+					if (isWebpackRun) {
+						setTimeout(
+							path => {
+								// webpack watch mode hot fix
+								fs.open(path, "w", (err, fd) => {
+									if (!err) {
+										fs.close(fd);
+									}
+								});
+							},
+							999,
+							absoluteFontFileName
+						).unref();
+					}
 				}
 
 				relativeUrl = relativeUrl.replace(/\\/g, "/"); // fix for windows

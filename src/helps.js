@@ -31,3 +31,12 @@ export function generateHash(raw) {
 export function isNumber(num) {
 	return !isNaN(parseFloat(num)) && typeof num !== "string";
 }
+
+export function checkIsWebpackRun(module) {
+	const stackLoader = [];
+	while (module) {
+		stackLoader.push(module.id);
+		module = module.parent;
+	}
+	return stackLoader.some(e => e.includes("postcss-loader"))
+}

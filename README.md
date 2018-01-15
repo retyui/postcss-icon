@@ -44,7 +44,7 @@ npm install --save-dev postcss-icon.stiffi
 npm install --save-dev postcss-icon.joshnh
 ```
 
-**Input:**
+## Input:
 
 ```css
 .icon.bad-name{
@@ -56,9 +56,11 @@ npm install --save-dev postcss-icon.joshnh
 }
 ```
 
-**Output:**
+## Output:
 
 ```css
+@font-face { /*  */ } /* added if you use font icon set */
+
 .icon.bad-name{
   /* @icon: 404-not-found-name */
 }
@@ -76,42 +78,49 @@ npm install --save-dev postcss-icon.joshnh
 }
 ```
 
-## Usage
+## Usage ([more examples](https://github.com/retyui/postcss-icon/tree/master/example/))
 
 ```js
+const { resolve } = require('path');
 const postcss     = require('postcss');
 const postcssIcon = require('postcss-icon');
-// exemple for all icon Set
-postcss(
-  postcssIcon(
-    { prefix: 'md-',  data: require('postcss-icon.material-design') },
-    { prefix: 'fa-',  data: require('postcss-icon.font-awesome-v4') },
-    { prefix: 'cssicon-',  data: require('postcss-icon.cssicon') },
-    { prefix: 'icono-',  data: require('postcss-icon.icono') },
-    { prefix: 'rose-',  data: require('postcss-icon.rosa') },
-    { prefix: 'airpwn-',  data: require('postcss-icon.airpwn') },
-    { prefix: 'stiffi-',  data: require('postcss-icon.stiffi') },
-    { prefix: 'joshnh-',  data: require('postcss-icon.joshnh') }
-  )
-);
 
-// example custom data set
-postcss([
+const fontSetOptions = {
+  inline: ["woff2"],
+  path: resolve(__dirname, "./public/assets/fonts/"), // folder to save all font files. Required absolute path!
+  formats: ["woff2", "woff" /*, "ttf", "svg", "eot"*/],
+  filename: "[css-name]-[set-name].[hash:4].[ext]",
+  url({ cssFile, fontName, hash }) { // function help fix url resolve
+    // const urlWithQueryHash = `../fonts/${fontName}?v=${hash.substr(0, 5)}`;
+    // const exmapleResolveUrl = `../fonts/${fontName}`;
+    return fontName;
+  }
+};
+// example for all icon Set
+postcss(
   postcssIcon({
-    prefix: "custom-",
-    data: {
-      iconName: [
-        ".extend {color: gold; /* ... all styles */}",
-        ".extend::after, .extend::before {position: absolute; /* ... all styles */}",
-        ".extend i, {color: gold; /* all styles */}"
-      ],
-      pen: [".extend { /* ... */}" /* , ... */]
-    }
+    "postcss-icon.material-design": {
+      ...fontSetOptions,
+      prefix: 'md-'
+    },
+    "postcss-icon.font-awesome-v4": {
+      ...fontSetOptions,
+      prefix: 'fa-'
+    },
+    "postcss-icon.cssicon": { prefix: 'cssicon-' },
+    "postcss-icon.icono": { prefix: 'icono-' },
+    "postcss-icon.rosa": { prefix: 'rose-' },
+    "postcss-icon.airpwn": { prefix: 'airpwn-' },
+    "postcss-icon.stiffi": { prefix: 'stiffi-' },
+    "postcss-icon.joshnh": { prefix: 'joshnh-' }
   })
-]);
+);
 ```
 
-Support table (2018-1-15):
+## Options
+
+
+## Formats Support table (2018-1-15):
 
 | Type | Support |
 |---|---|
