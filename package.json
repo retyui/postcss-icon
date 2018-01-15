@@ -45,7 +45,6 @@
 		"postcss-icon.font-awesome-v4": "^0.0.1",
 		"postcss-icon.material-design": "^0.0.2",
 		"postcss-merge-rules": "^4.0.0-rc.2",
-		"puppeteer": "^1.0.0",
 		"rimraf": "^2.6.2"
 	},
 	"keywords": [
