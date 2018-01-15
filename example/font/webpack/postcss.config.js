@@ -20,7 +20,7 @@ module.exports = ({file, env}) => {
 					prefix: "fa-",
 					...baseConfigFontIconSets
 				},
-				"postcss-icon.font-awesome-v5": false // this icon set not used
+				"postcss-icon.font-awesome": false // this icon set not used
 			}
 		}
 	};
