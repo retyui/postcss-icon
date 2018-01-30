@@ -1,5 +1,7 @@
 # postcss-icon
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/retyui/postcss-icon.svg)](https://greenkeeper.io/)
+
 ![postcss-icon](https://raw.githubusercontent.com/retyui/postcss-icon/master/logo.png)
 
 [![npm](https://img.shields.io/npm/v/postcss-icon.svg)](https://www.npmjs.com/package/postcss-icon)
