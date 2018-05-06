@@ -16,17 +16,17 @@ Now you do not need to connect the entire style library for css icons.
 
 ### Font icons:
 
-- [postcss-icon.material-design](https://github.com/retyui/postcss-icon.material-design) (count icons : 932) [result demo](https://retyui.github.io/postcss-icon/material-design/)
-- [postcss-icon.font-awesome-v4](https://github.com/retyui/postcss-icon.font-awesome-v4) (count icons : 786) [result demo](https://retyui.github.io/postcss-icon/font-awesome-v4/)
+- [![npm download count postcss-icon.material-design](https://img.shields.io/npm/dm/postcss-icon.material-design.svg)](https://www.npmjs.com/package/postcss-icon.material-design) [postcss-icon.material-design](https://github.com/retyui/postcss-icon.material-design) (count icons : 932) [result demo](https://retyui.github.io/postcss-icon/material-design/)
+- [![npm download count postcss-icon.font-awesome-v4](https://img.shields.io/npm/dm/postcss-icon.font-awesome-v4.svg)](https://www.npmjs.com/package/postcss-icon.font-awesome-v4) [postcss-icon.font-awesome-v4](https://github.com/retyui/postcss-icon.font-awesome-v4) (count icons : 786) [result demo](https://retyui.github.io/postcss-icon/font-awesome-v4/)
 
 ### Css only icons:
 
-- [postcss-icon.cssicon](https://github.com/retyui/postcss-icon.cssicon) (count icons : 192) [result demo](https://retyui.github.io/postcss-icon/cssicon/)
-- [postcss-icon.icono](https://github.com/retyui/postcss-icon.icono) (count icons : 131) [result demo](https://retyui.github.io/postcss-icon/icono/)
-- [postcss-icon.rosa](https://github.com/retyui/postcss-icon.rosa) (count icons : 78) [result demo](https://retyui.github.io/postcss-icon/rosa/)
-- [postcss-icon.airpwn](https://github.com/retyui/postcss-icon.airpwn) (count icons : 39) [result demo](https://retyui.github.io/postcss-icon/airpwn/)
-- [postcss-icon.stiffi](https://github.com/retyui/postcss-icon.stiffi) (count icons : 34) [result demo](https://retyui.github.io/postcss-icon/stiffi/)
-- [postcss-icon.joshnh](https://github.com/retyui/postcss-icon.joshnh) (count icons : 24) [result demo](https://retyui.github.io/postcss-icon/joshnh/)
+- [![npm download count postcss-icon.cssicon](https://img.shields.io/npm/dm/postcss-icon.cssicon.svg)](https://www.npmjs.com/package/postcss-icon.cssicon) [postcss-icon.cssicon](https://github.com/retyui/postcss-icon.cssicon) (count icons : 192) [result demo](https://retyui.github.io/postcss-icon/cssicon/)
+- [![npm download count postcss-icon.icono](https://img.shields.io/npm/dm/postcss-icon.icono.svg)](https://www.npmjs.com/package/postcss-icon.icono) [postcss-icon.icono](https://github.com/retyui/postcss-icon.icono) (count icons : 131) [result demo](https://retyui.github.io/postcss-icon/icono/)
+- [![npm download count postcss-icon.rosa](https://img.shields.io/npm/dm/postcss-icon.rosa.svg)](https://www.npmjs.com/package/postcss-icon.rosa) [postcss-icon.rosa](https://github.com/retyui/postcss-icon.rosa) (count icons : 78) [result demo](https://retyui.github.io/postcss-icon/rosa/)
+- [![npm download count postcss-icon.airpwn](https://img.shields.io/npm/dm/postcss-icon.airpwn.svg)](https://www.npmjs.com/package/postcss-icon.airpwn) [postcss-icon.airpwn](https://github.com/retyui/postcss-icon.airpwn) (count icons : 39) [result demo](https://retyui.github.io/postcss-icon/airpwn/)
+- [![npm download count postcss-icon.stiffi](https://img.shields.io/npm/dm/postcss-icon.stiffi.svg)](https://www.npmjs.com/package/postcss-icon.stiffi) [postcss-icon.stiffi](https://github.com/retyui/postcss-icon.stiffi) (count icons : 34) [result demo](https://retyui.github.io/postcss-icon/stiffi/)
+- [![npm download count postcss-icon.joshnh](https://img.shields.io/npm/dm/postcss-icon.joshnh.svg)](https://www.npmjs.com/package/postcss-icon.joshnh) [postcss-icon.joshnh](https://github.com/retyui/postcss-icon.joshnh) (count icons : 24) [result demo](https://retyui.github.io/postcss-icon/joshnh/)
 
 ## Install for postcss
 
