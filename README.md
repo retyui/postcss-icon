@@ -4,6 +4,7 @@
 ![postcss-icon](https://raw.githubusercontent.com/retyui/postcss-icon/master/logo.png)
 
 [![npm](https://img.shields.io/npm/v/postcss-icon.svg)](https://www.npmjs.com/package/postcss-icon)
+[![npm download count postcss-icon](https://img.shields.io/npm/dm/postcss-icon.svg)](https://www.npmjs.com/package/postcss-icon)
 [![AppVeyor](https://img.shields.io/appveyor/ci/retyui/postcss-icon.svg?label=win)](https://ci.appveyor.com/project/retyui/postcss-icon)
 [![Travis](https://img.shields.io/travis/retyui/postcss-icon.svg?label=unix)](https://travis-ci.org/retyui/postcss-icon)
 [![Greenkeeper badge](https://badges.greenkeeper.io/retyui/postcss-icon.svg)](https://greenkeeper.io/)
