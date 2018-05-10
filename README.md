@@ -7,7 +7,6 @@
 [![npm download count postcss-icon](https://img.shields.io/npm/dm/postcss-icon.svg)](https://www.npmjs.com/package/postcss-icon)
 [![AppVeyor](https://img.shields.io/appveyor/ci/retyui/postcss-icon.svg?label=win)](https://ci.appveyor.com/project/retyui/postcss-icon)
 [![Travis](https://img.shields.io/travis/retyui/postcss-icon.svg?label=unix)](https://travis-ci.org/retyui/postcss-icon)
-[![Greenkeeper badge](https://badges.greenkeeper.io/retyui/postcss-icon.svg)](https://greenkeeper.io/)
 
 PostCSS plugin that adds `css icons` from Icon sets
 
