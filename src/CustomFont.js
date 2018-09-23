@@ -1,6 +1,15 @@
 import fs from "fs";
 import { tmpdir } from "os";
+import {
+  isAbsolute,
+  join as pathJoin,
+  parse as pathParse,
+  relative as pathRelative
+} from "path";
+import { promisify } from "util";
+
 import mkdirp from "mkdirp-promise";
+
 import {
   isFunction,
   isString,
@@ -9,17 +18,7 @@ import {
   checkIsWebpackRun
 } from "./helps.js";
 import { NAME } from "./config";
-import {
-  isAbsolute,
-  join as pathJoin,
-  parse as pathParse,
-  relative as pathRelative
-} from "path";
 
-let { promisify } = require("util");
-if (!promisify) {
-  promisify = require("util.promisify");
-}
 const writeFileAsync = promisify(fs.writeFile);
 const readFileAsync = promisify(fs.readFile);
 const accessAsycn = promisify(fs.access);

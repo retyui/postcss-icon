@@ -4,6 +4,7 @@ import { NAME } from "./config";
 
 export default plugin(NAME, options => {
   if (!options) {
+    // eslint-disable-next-line no-console
     console.log(
       `[${NAME}]`,
       "Error: Options data for the css icon can not be empty!"
