@@ -1,42 +1,42 @@
 export function objectMap(obj, callback) {
-	return Object.keys(obj).map(prop => {
-		return callback(obj[prop], prop, obj);
-	});
+  return Object.keys(obj).map(prop => {
+    return callback(obj[prop], prop, obj);
+  });
 }
 
 export function asyncRun(fn) {
-	return Promise.resolve().then(fn);
+  return Promise.resolve().then(fn);
 }
 
 export function isString(s) {
-	return typeof s === "string";
+  return typeof s === "string";
 }
 
 export function isFunction(f) {
-	return typeof f === "function";
+  return typeof f === "function";
 }
 
 export function to16Number(n) {
-	return Number(n).toString(16);
+  return Number(n).toString(16);
 }
 
 import crypto from "crypto";
 export function generateHash(raw) {
-	return crypto
-		.createHash("md5")
-		.update(raw)
-		.digest("hex");
+  return crypto
+    .createHash("md5")
+    .update(raw)
+    .digest("hex");
 }
 
 export function isNumber(num) {
-	return !isNaN(parseFloat(num)) && typeof num !== "string";
+  return !isNaN(parseFloat(num)) && typeof num !== "string";
 }
 
 export function checkIsWebpackRun(module) {
-	const stackLoader = [];
-	while (module) {
-		stackLoader.push(module.id);
-		module = module.parent;
-	}
-	return stackLoader.some(e => e.includes("postcss-loader"))
+  const stackLoader = [];
+  while (module) {
+    stackLoader.push(module.id);
+    module = module.parent;
+  }
+  return stackLoader.some(e => e.includes("postcss-loader"));
 }
