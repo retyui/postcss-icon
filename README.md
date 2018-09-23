@@ -31,17 +31,17 @@ Now you do not need to connect the entire style library for css icons.
 
 ```bash
 # the plugin
-npm install --save-dev postcss-icon
+yarn add postcss-icon
 
 # and the icon set you need
-npm install --save-dev postcss-icon.material-design
-npm install --save-dev postcss-icon.font-awesome-v4
-npm install --save-dev postcss-icon.cssicon
-npm install --save-dev postcss-icon.icono
-npm install --save-dev postcss-icon.rosa
-npm install --save-dev postcss-icon.airpwn
-npm install --save-dev postcss-icon.stiffi
-npm install --save-dev postcss-icon.joshnh
+yarn add postcss-icon.material-design
+yarn add postcss-icon.font-awesome-v4
+yarn add postcss-icon.cssicon
+yarn add postcss-icon.icono
+yarn add postcss-icon.rosa
+yarn add postcss-icon.airpwn
+yarn add postcss-icon.stiffi
+yarn add postcss-icon.joshnh
 ```
 
 ## Input:
