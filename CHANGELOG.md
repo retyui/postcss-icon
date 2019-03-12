@@ -7,9 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Update babel to latest version
 - Update dependencies
 - Add postcss@7
-- Remove support node@6
+- Drop support [node@6.x.x](https://github.com/nodejs/Release)
 - Reduce package size
 
 ## 7.1.0
 
-- Init version
+- Init
