@@ -126,8 +126,8 @@ postcss(
 
 | Type                                       | Support |
 | ------------------------------------------ | ------- |
-| [woff2](https://caniuse.com/#feat=woff2)   | 78.53%  |
-| [woff](https://caniuse.com/#feat=woff)     | 94.36%  |
-| [ttf](https://caniuse.com/#feat=ttf)       | 94.73%  |
-| [svg](https://caniuse.com/#feat=svg-fonts) | 25.36%  |
-| [eot](https://caniuse.com/#feat=eot)       | 3.41%   |
+| [woff2](https://caniuse.com/#feat=woff2)   | 87.58%  |
+| [woff](https://caniuse.com/#feat=woff)     | 96.09%  |
+| [ttf](https://caniuse.com/#feat=ttf)       | 96.47%  |
+| [svg](https://caniuse.com/#feat=svg-fonts) | 15.75%  |
+| [eot](https://caniuse.com/#feat=eot)       | 2.67%   |
