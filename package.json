@@ -1,59 +1,58 @@
 {
-	"name": "postcss-icon",
-	"description": "PostCSS plugin which allows you to quickly add styles to css icons",
-	"version": "7.1.0",
-	"repository": "https://github.com/retyui/postcss-icon",
-	"author": "retyui <vamnemne@gmail.com>",
-	"license": "MIT",
-	"main": "postcss-icon.js",
-	"files": [
-		"lib",
-		"lib-old"
-	],
-	"scripts": {
-		"babel:modern": "cross-env BABEL_ENV=modern babel src --out-dir lib",
-		"babel:old": "cross-env BABEL_ENV=old babel src --out-dir lib-old",
-		"clean": "rimraf ./test/test.js ./lib ./lib-old",
-		"compile": "npm-run-all --parallel babel:* testcompile",
-		"lint": "eslint ./**/*.js --fix --quiet",
-		"precompile": "npm-run-all clean lint",
-		"prepare": "npm-run-all compile",
-		"pretest": "npm run compile",
-		"test": "mocha ./test/test.js",
-		"testcompile": "cross-env BABEL_ENV=old babel test/test.mjs --out-file test/test.js"
-	},
-	"dependencies": {
-		"fonteditor-core": "^1.0.0",
-		"mkdirp-promise": "^5.0.1",
-		"postcss": "^6.0.0",
-		"regenerator-runtime": "^0.11.1",
-		"ttf2woff2": "^2.0.0",
-		"util.promisify": "^1.0.0"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.24.1",
-		"babel-eslint": "^8.2.1",
-		"babel-plugin-add-module-exports": "^0.2.1",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "^1.5.2",
-		"babel-register": "^6.24.1",
-		"chai": "4.1.2",
-		"cross-env": "^5.1.3",
-		"eslint": "4.19.0",
-		"mocha": "5.0.3",
-		"npm-run-all": "^4.1.2",
-		"postcss-icon.font-awesome-v4": "^0.0.2",
-		"postcss-icon.material-design": "^0.0.3",
-		"postcss-merge-rules": "^4.0.0-rc.2",
-		"rimraf": "^2.6.2"
-	},
-	"keywords": [
-		"css",
-		"css-icon",
-		"postcss",
-		"postcss-plugin"
-	],
-	"engines": {
-		"node": ">= 4.2"
-	}
+  "name": "postcss-icon",
+  "description": "PostCSS plugin which allows you to quickly add styles to css icons",
+  "version": "8.0.0",
+  "repository": "https://github.com/retyui/postcss-icon",
+  "author": "David Nrb <offantik@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rimraf ./test/test.js ./lib",
+    "compile": "npm-run-all --parallel build testcompile",
+    "lint": "eslint ./**/*.js --fix --quiet",
+    "precompile": "npm-run-all clean lint",
+    "prepublishOnly": "npm-run-all compile",
+    "pretest": "npm run compile",
+    "test": "mocha ./test/test.js",
+    "testcompile": "babel test/test.mjs --out-file test/test.js"
+  },
+  "dependencies": {
+    "fonteditor-core": "^1.0.5",
+    "mkdirp-promise": "^5.0.1",
+    "ttf2woff2": "^2.0.3"
+  },
+  "peerDependencies": {
+    "postcss": "^6.0.0 || ^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.15.3",
+    "mocha": "^6.0.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.14",
+    "postcss-icon.font-awesome-v4": "^0.0.2",
+    "postcss-icon.material-design": "^0.0.3",
+    "postcss-merge-rules": "^4.0.3",
+    "rimraf": "^2.6.3"
+  },
+  "keywords": [
+    "css",
+    "css-icon",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "engines": {
+    "node": ">= 8"
+  }
 }
